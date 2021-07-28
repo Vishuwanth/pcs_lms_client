@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/pcs_client/static/css/main.3ef2083f.chunk.css",
-    "main.js": "/pcs_client/static/js/main.9d196530.chunk.js",
-    "main.js.map": "/pcs_client/static/js/main.9d196530.chunk.js.map",
-    "runtime~main.js": "/pcs_client/static/js/runtime~main.445a83a0.js",
-    "runtime~main.js.map": "/pcs_client/static/js/runtime~main.445a83a0.js.map",
-    "static/css/2.52d01c21.chunk.css": "/pcs_client/static/css/2.52d01c21.chunk.css",
-    "static/js/2.65486910.chunk.js": "/pcs_client/static/js/2.65486910.chunk.js",
-    "static/js/2.65486910.chunk.js.map": "/pcs_client/static/js/2.65486910.chunk.js.map",
-    "index.html": "/pcs_client/index.html",
-    "precache-manifest.fd762d3398f6c8e879af3b0c93b250b2.js": "/pcs_client/precache-manifest.fd762d3398f6c8e879af3b0c93b250b2.js",
-    "service-worker.js": "/pcs_client/service-worker.js",
-    "static/css/2.52d01c21.chunk.css.map": "/pcs_client/static/css/2.52d01c21.chunk.css.map",
-    "static/css/main.3ef2083f.chunk.css.map": "/pcs_client/static/css/main.3ef2083f.chunk.css.map",
-    "static/media/home_page.svg": "/pcs_client/static/media/home_page.001713b0.svg",
-    "static/media/press_play.svg": "/pcs_client/static/media/press_play.993f7d29.svg"
+    "main.css": "/lms_client/static/css/main.3ef2083f.chunk.css",
+    "main.js": "/lms_client/static/js/main.9d196530.chunk.js",
+    "main.js.map": "/lms_client/static/js/main.9d196530.chunk.js.map",
+    "runtime~main.js": "/lms_client/static/js/runtime~main.f6fd72bf.js",
+    "runtime~main.js.map": "/lms_client/static/js/runtime~main.f6fd72bf.js.map",
+    "static/css/2.52d01c21.chunk.css": "/lms_client/static/css/2.52d01c21.chunk.css",
+    "static/js/2.2a970d98.chunk.js": "/lms_client/static/js/2.2a970d98.chunk.js",
+    "static/js/2.2a970d98.chunk.js.map": "/lms_client/static/js/2.2a970d98.chunk.js.map",
+    "index.html": "/lms_client/index.html",
+    "precache-manifest.f140ea2caf50d3613da66b076440448a.js": "/lms_client/precache-manifest.f140ea2caf50d3613da66b076440448a.js",
+    "service-worker.js": "/lms_client/service-worker.js",
+    "static/css/2.52d01c21.chunk.css.map": "/lms_client/static/css/2.52d01c21.chunk.css.map",
+    "static/css/main.3ef2083f.chunk.css.map": "/lms_client/static/css/main.3ef2083f.chunk.css.map",
+    "static/media/home_page.svg": "/lms_client/static/media/home_page.001713b0.svg",
+    "static/media/press_play.svg": "/lms_client/static/media/press_play.993f7d29.svg"
   }
 }
