@@ -6,6 +6,7 @@ import Switch from "react-switch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 
+import { Link } from "react-router-dom";
 
 
 
