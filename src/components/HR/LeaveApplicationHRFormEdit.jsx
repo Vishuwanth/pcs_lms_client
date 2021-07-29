@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Col, Row } from "react-bootstrap";
 import axios from "axios";
+import '../Employee/LeaveApplicationEmpForm.css'
 
 function LeaveApplicationHRFormEdit(props) {
     // FromDateData: this.props.editData["FromDate"].slice(0, 10),
