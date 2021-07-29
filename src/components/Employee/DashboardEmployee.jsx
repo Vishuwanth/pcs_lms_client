@@ -10,19 +10,21 @@ import NavBar from "../NavBar.jsx";
 
 //components
 import Employeehome from "./Employeehome";
-import EmpProfile from "./EmpProfile";
+
+
 import LeaveApplicationEmp from "./LeaveApplicationEmp";
 import axios from "axios";
+import Holidays from "../Holidays/Holidays";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUsersCog,
-  faUsers,
+  faUser,
   faHome,
   faPenFancy,
-  faListAlt,
+  faUmbrellaBeach,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
+import Profile from "../Profile/Profile";
 
 // function RoleAdminF() {
 //   return <Role />;
@@ -112,9 +114,15 @@ function DashboardAdmin(props) {
                   </Link> 
                 </li>
                 <li>
+                  <Link to={ "/employee/"+ props.data["_id"]+ "/holidays"}>
+                    <FontAwesomeIcon icon={faUmbrellaBeach} className="sidebar-icon" /> 
+                    Holidays  
+                  </Link> 
+                </li>
+                <li>
                   <Link to={ "/employee/"+ props.data["_id"] +"/profile"}>
                     <FontAwesomeIcon
-                      icon={faUsers}
+                      icon={faUser}
                       className="sidebar-icon"
                     /> 
                     Profile 
@@ -127,6 +135,12 @@ function DashboardAdmin(props) {
               <div id="sidebar-top-content" />
                 <Switch>
 
+                {/* Default Route on login */}
+                <Route exact path="/employee" 
+                  render={()=>
+                    <Employeehome data={props.data} leaveBalance={localStorage.getItem("leaveBalance")} back={false}/>
+                  }/>
+
                   {/* Home Route */}
                   <Route exact path="/employee/:id/home" 
                   render={()=>
@@ -138,10 +152,13 @@ function DashboardAdmin(props) {
                     render={() => <LeaveApplicationEmp data={props.data} />}
                   />
 
+                {/* Holidays Route */}
+                <Route path="/employee/:id/holidays" component={Holidays}/>
+
                 {/* Profile Route */}
                 <Route exact path="/employee/:id/profile" 
                   render={()=>
-                    <EmpProfile data={props.data} back={false}/>
+                    <Profile data={props.data} back={false}/>
                   }/>
 
                 </Switch>
