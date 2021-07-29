@@ -24,14 +24,36 @@
 #role-form-title{
     background-color:
     #5569dc50 ;
+    display: block;
+    margin: auto;
     padding: 10px;
     color: #444;
-    width: 200px;
+    min-width: 100px;
+    max-width: 400px;
     border-radius: 12px;
     text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .form-container #role-form-title{
     align-self: center;
 }
 
+.update-cancel-container{
+    display: flex;
+    justify-content: center;
+    margin:10px
+}
+
+.update-cancel-container button{
+    margin-right: 10px;
+}
+
+#form{
+    padding:10px;
+}
+#form .row {
+    margin-bottom:10px;
+}
