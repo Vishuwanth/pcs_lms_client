@@ -107,7 +107,7 @@ function LeaveApplicationHRTable(props) {
   const loadLeaveApplicationHRData = () => {
     axios
       .get(
-        "http://localhost:9002/leave-application-hr/",
+        "https://pcs-lms.herokuapp.com/leave-application-hr/",
         {
           headers: {
             authorization: localStorage.getItem("token") || ""
@@ -167,7 +167,7 @@ function LeaveApplicationHRTable(props) {
   //   if (window.confirm("Are you sure to delete this record? ") == true) {
   //     axios
   //       .delete(
-  //         "http://localhost:9002/leave-application-hr/" + e1 + "/" + e2, {
+  //         "https://pcs-lms.herokuapp.com/leave-application-hr/" + e1 + "/" + e2, {
   //         headers: {
   //           authorization: localStorage.getItem("token") || ""
   //         }

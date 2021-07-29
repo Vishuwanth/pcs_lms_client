@@ -5,7 +5,7 @@ body,
 } */
 
   #outer-main-div {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
   }
   #outer-nav {

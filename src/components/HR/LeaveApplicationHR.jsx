@@ -49,7 +49,7 @@ function LeaveApplicationHR(props) {
         console.log("employee id:",info["_id"])
         await axios
             .put(
-                "http://localhost:9002/leave-application-hr/" + info["_id"],
+                "https://pcs-lms.herokuapp.com/leave-application-hr/" + info["_id"],
                 body, {
                 headers: {
                     authorization: localStorage.getItem("token") || ""
@@ -68,7 +68,7 @@ function LeaveApplicationHR(props) {
             });
         setEditForm(false)
         //send mail form node mailer
-        await axios.post("http://localhost:9002/leave-application-hr/"+info["_id"]+"/status-mail/")
+        await axios.post("https://pcs-lms.herokuapp.com/leave-application-hr/"+info["_id"]+"/status-mail/")
 
         
     };
