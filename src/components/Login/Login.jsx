@@ -130,13 +130,6 @@ function Login(props) {
         </div>
         
       </div>
-
-
-
-
-
-
-
     </>
   )
 }

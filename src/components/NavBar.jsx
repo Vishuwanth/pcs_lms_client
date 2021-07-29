@@ -46,12 +46,12 @@ function NavBar(props) {
               {props.loginInfo["Name"]}
             </p>
             <div>
-              <Link to="/">
+              
                 <p  onClick={props.onlogout} style={{ "cursor": "pointer" }} className="navbar-right-content">
                   Log Out
                   <span><FontAwesomeIcon icon={faPowerOff} id="plus-icon" /></span>
                 </p>
-              </Link>
+             
             </div>
 
           </Nav>
