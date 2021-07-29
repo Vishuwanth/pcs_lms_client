@@ -60,6 +60,7 @@ function App () {
       Name: localStorage.getItem("Name") || ""
     })
     setIsLogin(localStorage.getItem("isLogin") == "true")
+    history.push("/login")
   };
 
   const login =(userMail,userPass) => {
