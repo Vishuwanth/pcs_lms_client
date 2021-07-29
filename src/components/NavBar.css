@@ -64,7 +64,7 @@ justify-content: space-between;
   margin-left: 10px;
 }
 .navbar-right-content{
-  background-color: #77be45;
+  background-color: #5569dc;
   border-radius: 10px;
   padding: 5px;
   color: #444;
@@ -73,9 +73,9 @@ justify-content: space-between;
 
 
 .navbar-right-content:hover{
-  background-color: #5569dc;
+  background-color: #5569dc50;
   border-radius: 10px;
   padding: 5px;
-  color: #77be45;
+  color: #444;
   font-weight: 600;
 }
