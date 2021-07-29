@@ -11,54 +11,55 @@ import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 
 
 function NavBar(props) {
-    // console.log(props.onlogout())
-    return (
-      <div>
-        <Navbar bg="light" expand="lg" className="nav-bar" fixed="top"  id="main-nav">
-          <Navbar.Brand id="logo-anchor">
-            <img id ="nav-bar-logo" src={pcs_logo} alt="company logo" />
-            
-            <span id="toggle-switch">
-                <Switch 
-                    checked={props.checked}
-                    onChange={props.handleChange}
-                    onColor="#5569dc"
-                    onHandleColor="#ffffff"
-                    handleDiameter={10}
-                    uncheckedIcon={false}
-                    checkedIcon={false}
-                    boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                    activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                    height={17}
-                    width={35}
-                    className="react-switch"
-                    id="material-switch"
-                    />
-            </span>
-            </Navbar.Brand>
-            
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        
-          <Navbar.Collapse id="logout-navbar-nav">
-            <Nav className="collapse-navbar">             
-              <p onClick={props.onClick} className="navbar-right-content">
-                        {props.loginInfo["Name"]}
-                </p>
-                <div>
-                <a href="/login" onClick={props.onlogout} style={{"cursor":"pointer"}} className="navbar-right-content">
+  // console.log(props.onlogout())
+  return (
+    <div>
+      <Navbar bg="light" expand="lg" className="nav-bar" fixed="top" id="main-nav">
+        <Navbar.Brand id="logo-anchor">
+          <img id="nav-bar-logo" src={pcs_logo} alt="company logo" />
+
+          <span id="toggle-switch">
+            <Switch
+              checked={props.checked}
+              onChange={props.handleChange}
+              onColor="#5569dc"
+              onHandleColor="#ffffff"
+              handleDiameter={10}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+              height={17}
+              width={35}
+              className="react-switch"
+              id="material-switch"
+            />
+          </span>
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+        <Navbar.Collapse id="logout-navbar-nav">
+          <Nav className="collapse-navbar">
+            <p onClick={props.onClick} className="navbar-right-content">
+              {props.loginInfo["Name"]}
+            </p>
+            <div>
+              <Link to="/">
+                <p  onClick={props.onlogout} style={{ "cursor": "pointer" }} className="navbar-right-content">
                   Log Out
                   <span><FontAwesomeIcon icon={faPowerOff} id="plus-icon" /></span>
-                  </a>
-                
-                </div>
-              
-            </Nav>
-          </Navbar.Collapse>
-        
+                </p>
+              </Link>
+            </div>
+
+          </Nav>
+        </Navbar.Collapse>
+
       </Navbar>
-      </div>
-    );
-  
+    </div>
+  );
+
 }
 
 export default NavBar;
