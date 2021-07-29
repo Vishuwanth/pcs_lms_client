@@ -51,7 +51,7 @@ function App () {
     event.target.reset();
   };
 
-  const handleLogout = event => {
+  const handleLogout = async event => {
     // console.log("logout");
     localStorage.clear();
     setData({
@@ -60,7 +60,7 @@ function App () {
       Name: localStorage.getItem("Name") || ""
     })
     setIsLogin(localStorage.getItem("isLogin") == "true")
-    history.push("/login")
+    await history.push("/")
   };
 
   const login =(userMail,userPass) => {
