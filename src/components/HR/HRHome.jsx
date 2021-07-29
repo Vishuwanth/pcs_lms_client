@@ -1,9 +1,25 @@
-import React from 'react'
+import  React, { useState , useEffect } from 'react'
+import './HRHome.css'
+export const HRHome = (props) => {
 
-function HRHome() {
+    var [date,setDate] = useState(new Date());
+    
+    useEffect(() => {
+        var timer = setInterval(()=>setDate(new Date()), 1000 )
+        return function cleanup() {
+            clearInterval(timer)
+        }
+    
+    });
+
+    console.log(date.getDate())
+
     return(
-        <div> 
-            <h1>HR HOME page</h1>
+        <div className="home">
+            <div className="home-card">
+                <p className="date"> Date : {date.toLocaleDateString()}</p>
+                <p className="time"> Time : {date.toLocaleTimeString()}</p>
+            </div>
         </div>
     )
 }
