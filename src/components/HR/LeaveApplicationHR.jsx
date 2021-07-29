@@ -68,7 +68,7 @@ function LeaveApplicationHR(props) {
             });
         setEditForm(false)
         //send mail form node mailer
-        //await axios.post("http://localhost:9002/leave-application-hr/"+info["_id"]+"/status-mail/")
+        // await axios.post("https://pcs-lms.herokuapp.com/leave-application-hr/"+info["_id"]+"/status-mail/")
 
         
     };
