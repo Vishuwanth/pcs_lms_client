@@ -33,7 +33,7 @@ function Login(props) {
                 <i className="fas fa-user"></i>
                 <input className="login-form-input"
                   type="text"
-                  placeholder="Email"
+                  placeholder="PCS Email"
                   required="required"
                   name="Username"
                 />
