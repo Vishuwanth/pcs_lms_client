@@ -59,8 +59,8 @@ function App () {
       Account: localStorage.getItem("Account") || "",
       Name: localStorage.getItem("Name") || ""
     })
-    setIsLogin(localStorage.getItem("isLogin") == "true")
-    await history.push("/")
+    setIsLogin(localStorage.getItem("isLogin") == "true");
+     history.push("/")
   };
 
   const login =(userMail,userPass) => {
@@ -232,7 +232,7 @@ function App () {
                 )
             }
           />     
-          <Redirect to="/login" /> 
+          <Redirect to="/" /> 
       </Switch>
     </Router>
   )
