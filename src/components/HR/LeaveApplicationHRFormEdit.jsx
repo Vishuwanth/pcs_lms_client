@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Form, Button, Col, Row } from "react-bootstrap";
 import axios from "axios";
 import '../Employee/LeaveApplicationEmpForm.css'
-
 function LeaveApplicationHRFormEdit(props) {
     // FromDateData: this.props.editData["FromDate"].slice(0, 10),
     // ToDateData: this.props.editData["ToDate"].slice(0, 10),
@@ -136,7 +135,7 @@ function LeaveApplicationHRFormEdit(props) {
                             </Form.Control>
                         </Col>
                     </Form.Group>
-
+                <div className="update-cancel-container">
                     <Form.Group as={Row} id="form-submit-button">
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="submit">Update</Button>
@@ -145,10 +144,11 @@ function LeaveApplicationHRFormEdit(props) {
                     <Form.Group as={Row} id="form-cancel-button">
                         <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
                             <Button type="reset" onClick={props.onFormEditClose}>
-                                cancel
+                                Cancel
                             </Button>
                         </Col>
                     </Form.Group>
+                    </div>
                 </Form>
             </div>
         </div>
