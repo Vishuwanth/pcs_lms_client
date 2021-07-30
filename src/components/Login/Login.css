@@ -408,3 +408,8 @@ form.sign-up-form{
 .show-submit-button{
   display: block;
 }
+/* error message for invalid username and password */
+.alert{
+  font-size: 13px;
+  color:red
+}
