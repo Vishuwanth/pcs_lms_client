@@ -12,7 +12,7 @@ export const Employeehome = (props) => {
     
     });
 
-    console.log(date.getDate())
+    
 
     return(
         <div className="home">
