@@ -1,49 +1,56 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import "./Login.css";
 import { ScaleLoader } from "react-spinners";
 import { css } from "@emotion/core";
 import pcs_logo from "../Images/pcs_logo.png"
 import home_page from "../Images/home_page.svg"
 import press_play from "../Images/press_play.svg"
+import wave from "../Images/wave.png"
+import home from "../Images/home_page_3.svg"
+import login_js from "./Login.js"
+import sign_up from "../Images/signup.svg"
+import sign_in from "../Images/sign_in.svg"
+
 
 const override = css`
   display: block;
   margin: 0 auto;
   border-color: red;
 `;
-// { backgroundImage:`url(${home_page})` }
+
 function Login(props) {
-  // const {loading,pass} = props 
+  const [signUpMode, setSignUpMode] = useState(false)
 
-  // console.log(loading)
 
-  console.log("Login ",props)
-  console.log("login props pass",props.pass)
   return (
-    <>
-      <div className="container">
+    <React.Fragment>
+      <div className={`container${signUpMode ? " sign-up-mode" : ""}`}>
+        {/* singin and signup forms container */}
         <div className="forms-container">
           <div className="signin-signup">
-            <form className="sign-in-form" action="" method="" onSubmit={props.onSubmit} >
-              <div id="logo-div">
-                <img id="logo-img" src={pcs_logo} alt="LOGO" />
-              </div>
-              {/* <h2 className="title">Log In</h2> */}
+            {/* sign in container */}
+            <form action="" className="sign-in-form" onSubmit={props.onSubmit}>
+
+              <img className="title" src={pcs_logo} alt="pcs Logo" />
+              {/* <h2 className="title">LOG IN</h2> */}
+              {/* uer mail container */}
               <div className="input-field">
                 <i className="fas fa-user"></i>
-                <input className="login-form-input"
-                  type="text"
-                  placeholder="PCS Email"
-                  required="required"
-                  name="Username"
-                />
+                <input type="text" placeholder="PCS EMAIL" name="USER_MAIL" id="" required="required" />
               </div>
+              {/* password container */}
               <div className="input-field">
                 <i className="fas fa-lock"></i>
-                <input className="login-form-input"
-                  type="password"
-                  placeholder="Password"
-                  required="required"
+                <input type="password" placeholder="PASSWORD" name="" id="" required="required" />
+              </div>
+              <input type="submit" value="Login"  className={`button solid ${props.loading ? "hide-submit-button" : "show-submit-button"}`} />
+              <div className="loading">
+                <ScaleLoader
+                  css={override}
+                  sizeUnit={"px"}
+                  size={150}
+                  color={"#33d98f"}
+                  loading={props.loading}
                 />
               </div>
               {!props.pass ? (
@@ -52,92 +59,110 @@ function Login(props) {
               ) : (
                 ""
               )}
-              <a href="#">Forgot password?</a>
-              <input className="login-form-input"
-                className="button"
-                type="submit"
-                value="Sign in"
-                id="signInBtn"
-              />
-
-             
-            </form>
-            <form className="sign-up-form" action="" method="" onSubmit={props.onSubmit} >
-              <div id="logo-div">
-                <img id="logo-img" src={pcs_logo} alt="LOGO" />
+              <p className="social-text">or Sign In With Social Platforms</p>
+              <div className="social-media">
+                <a href="#" className="social-icon">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-google"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
               </div>
-              {/* <h2 className="title">Log In</h2> */}
+            </form>
+
+            {/* sign up from */}
+            <form action="" className="sign-up-form" >
+              <img className="title" src={pcs_logo} alt="pcs Logo" />
+
+              {/* user Name container */}
               <div className="input-field">
                 <i className="fas fa-user"></i>
-                <input className="login-form-input"
-                  type="text"
-                  placeholder="Email"
-                  required="required"
-                  name="Username"
-                />
+                <input type="text" placeholder="User Name" name="USER_NAME" id="" required="required" />
               </div>
+              {/* uer mail container */}
+              <div className="input-field">
+                <i className="fas fa-envelope"></i>
+                <input type="text" placeholder="PCS EMAIL" name="USER_MAIL" id="" required="required" />
+              </div>
+              {/* password container */}
               <div className="input-field">
                 <i className="fas fa-lock"></i>
-                <input className="login-form-input"
-                  type="password"
-                  placeholder="Password"
-                  required="required"
+                <input type="password" placeholder="PASSWORD" name="" id="" required="required" />
+              </div>
+              <input type="submit" value="SIGN UP" className="button solid" />
+              <div className="loading">
+                <ScaleLoader
+                  css={override}
+                  sizeUnit={"px"}
+                  size={150}
+                  color={"#123abc"}
+                  loading={props.loading}
                 />
               </div>
-              <input className="login-form-input"
-                className="button"
-                type="submit"
-                value="Sign Up"
-                id="signUpBtn"
-              />
-
-
-
-              {/* {!this.props.pass ? (
-                <p className="alert">Invalid UserName or Password</p>
-              ) : (
-                ""
-              )} */}
+              <p className="social-text">or Sign Up With Social Platforms</p>
+              <div className="social-media">
+                <a href="#" className="social-icon">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-google"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+              </div>
             </form>
           </div>
         </div>
         <div className="panels-container">
           <div className="panel left-panel">
             <div className="content">
-              {/* <h3>One of us??</h3> */}
-              {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum culpa sint mollitia incidunt molestias expedita, tempore sequi doloremque deserunt temporibus, eius repellat optio, error esse fuga aut veniam illum aperiam.</p> */}
-              {/* <button className="button transparent" id="sign-in-button">Sign Up</button> */}
+              <h3>New here ?</h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+                ex ratione. Aliquid!
+              </p>
+              <button className="button transparent" id="sign-up-btn"
+                onClick={() => {
+                  setSignUpMode(true)
+                }}>
+                Sign up
+              </button>
             </div>
-            <img src={home_page} className="image" alt="home bg" />
+            <img src={sign_in} className="image" alt="" />
           </div>
           <div className="panel right-panel">
             <div className="content">
-              <h3>One of us??</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum culpa sint mollitia incidunt molestias expedita, tempore sequi doloremque deserunt temporibus, eius repellat optio, error esse fuga aut veniam illum aperiam.</p>
-              <button className="button transparent" id="sign-up  -button">Sign Up</button>
+              <h3>One of us ?</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrums
+                laboriosam ad deleniti.
+              </p>
+              <button className="button transparent" id="sign-in-btn"
+                onClick={() => {
+                  setSignUpMode(false)
+                }}>
+
+                Sign in
+              </button>
             </div>
-            <img src={press_play } className="image" alt="home bg" />
+            <img src={sign_up} className="image" alt="sign up" />
           </div>
         </div>
-        <div className="loading">
-          <ScaleLoader
-            css={override}
-            sizeUnit={"px"}
-            size={150}
-            color={"#123abc"}
-            loading={props.loading}
-          />
-        </div>
-        
+
       </div>
 
+    </React.Fragment>
 
-
-
-
-
-
-    </>
   )
 }
 
