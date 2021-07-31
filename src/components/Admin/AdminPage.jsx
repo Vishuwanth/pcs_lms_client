@@ -26,17 +26,17 @@ const Pages = styled.div`
     }
 `
 
-function AdminPage() {
+function AdminPage(props) {
     return (
         <>
-            <Sidebar />
+            <Sidebar onlogout={props.onlogout}/>
             <Pages>
                 <Switch>
-                    <Route exact path="/admin" component={Home} />
-                    <Route exact path="/admin/leave" component={Leave} />
-                    <Route exact path="/admin/calender" component={Calender} />
-                    <Route exact path="/admin/holidays" component={Holidays} />
-                    <Route exact path="/admin/about" component={About} />
+                    <Route exact path="/" component={()=><Home/>} />
+                    <Route exact path="/leave" component={()=><Leave/>} />
+                    <Route exact path="/calender" component={()=><Calender/>} />
+                    <Route exact path="/holidays" component={()=><Holidays/>} />
+                    <Route exact path="/about" component={()=><About/>} />
                 </Switch>
             </Pages>
         </>

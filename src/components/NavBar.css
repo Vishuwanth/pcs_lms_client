@@ -56,6 +56,7 @@ justify-content: space-between;
 .collapse-navbar{
   margin-left: auto;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -63,7 +64,13 @@ justify-content: space-between;
   
   margin-left: 10px;
 }
-.navbar-right-content{
+.collapse-navbar .navbar-right-content{
+  border-radius: 10px;
+  padding: 5px;
+  color: #444;
+  font-weight: 500;
+}
+.collapse-navbar div a{
   background-color: #5569dc;
   border-radius: 10px;
   padding: 5px;
@@ -72,10 +79,15 @@ justify-content: space-between;
 }
 
 
-.navbar-right-content:hover{
+
+.collapse-navbar div a:hover{
   background-color: #5569dc50;
   border-radius: 10px;
   padding: 5px;
   color: #444;
   font-weight: 600;
+}
+
+.collapse-navbar div{
+  min-width: 200px;
 }

@@ -37,14 +37,14 @@ function NavBar(props) {
             </span>
             </Navbar.Brand>
             
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         
           <Navbar.Collapse id="logout-navbar-nav">
             <Nav className="collapse-navbar">             
               <p onClick={props.onClick} className="navbar-right-content">
                         {props.loginInfo["Name"]}
                 </p>
-                <div>
+                <div >
                 <a href="/login" onClick={props.onlogout} style={{"cursor":"pointer"}} className="navbar-right-content">
                   Log Out
                   <span><FontAwesomeIcon icon={faPowerOff} id="plus-icon" /></span>

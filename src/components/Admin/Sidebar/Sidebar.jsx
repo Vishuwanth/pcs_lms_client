@@ -1,6 +1,6 @@
-import { HashRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import { HashRouter as Router,NavLink } from "react-router-dom";
 import React, { useState } from 'react'
-import pcs_logo from "../../Images/pcs_logo.png"
+// import pcs_logo from "../../Images/pcs_logo.png"
 
 // components import
 import styled from "styled-components"
@@ -193,7 +193,7 @@ const Name = styled.div`
         }
     }
 `
-const Logout = styled.button`
+const Logout = styled(NavLink)`
     border: none;
     width: 2rem;
     height: 2rem;
@@ -216,6 +216,7 @@ const Logout = styled.button`
 `
 
 const Sidebar = (props) => {
+    console.log(props.onlogout)
 
     const [click, setClick] = useState(false)
     const [profileClick, setProfileClick] = useState(false)
@@ -223,6 +224,7 @@ const Sidebar = (props) => {
 
     const handleClick = () => setClick(!click)
     const handleProfileClick = () => setProfileClick(!profileClick)
+    
 
     return (
         <Router>
@@ -264,7 +266,7 @@ const Sidebar = (props) => {
                             <h4>Admin</h4>
                             <a href="/#">View Profile</a>
                         </Name>
-                        <Logout>
+                        <Logout to="/login" onClick={()=>props.onlogout} >
                             <i className="fas fa-power-off"></i>
                         </Logout>
                     </Details>

@@ -30,7 +30,7 @@ import Profile from "../Profile/Profile";
 //   return <Role />;
 // }
 
-function DashboardAdmin(props) {
+function DashboardEmployee(props) {
 //   state = {
 //     redirect: true,
 //     checked: true 
@@ -41,7 +41,7 @@ function DashboardAdmin(props) {
 
     // console.log("value of id in data in props",props.data["id"])
 
-    const [redirect, setRedirect] = useState(true)
+    // const [redirect, setRedirect] = useState(true)
     const [checked, setChecked] = useState(true)
 
     // console.log("starting value",checked)
@@ -170,4 +170,4 @@ function DashboardAdmin(props) {
   
 }
 
-export default DashboardAdmin;
+export default DashboardEmployee;
