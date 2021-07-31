@@ -16,9 +16,10 @@ import history from "./history.js";
 import Login from "./components/Login/Login.jsx";
 import axios from "axios";
 
-import DashboardAdmin from "./components/Admin/DashboardAdmin";
+import AdminPage from "./components/Admin/AdminPage";
 import DashboardHR from './components/HR/DashboardHR'
 import DashboardEmployee from './components/Employee/DashboardEmployee'
+
 
 
 function App () {
@@ -195,7 +196,7 @@ function App () {
             path="/admin"
             render={() =>
               data["Account"] == 1 ? (
-                <DashboardAdmin data={data} onlogout={handleLogout} />
+                <AdminPage data={data} onlogout={handleLogout} />
 
               ) : (
                   <Redirect to="/login" />

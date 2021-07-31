@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Profile.css";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Col, Row } from "react-bootstrap";
 import axios from "axios";
 import './Profile.css'
 import { useEffect,useState } from "react";
@@ -19,7 +19,7 @@ function Profile(props) {
 
     useEffect(()=>{
         loadProfileDetails()
-    },[])
+    })
     
     function loadProfileDetails(){
         axios.get("https://pcs-lms.herokuapp.com/employee/"+props.data["_id"]+"/profile")

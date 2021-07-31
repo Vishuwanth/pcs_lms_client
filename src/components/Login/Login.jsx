@@ -1,13 +1,8 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState} from 'react'
 import "./Login.css";
 import { ScaleLoader } from "react-spinners";
 import { css } from "@emotion/core";
 import pcs_logo from "../Images/pcs_logo.png"
-import home_page from "../Images/home_page.svg"
-import press_play from "../Images/press_play.svg"
-import wave from "../Images/wave.png"
-import home from "../Images/home_page_3.svg"
-import login_js from "./Login.js"
 import sign_up from "../Images/signup.svg"
 import sign_in from "../Images/sign_in.svg"
 
@@ -61,16 +56,16 @@ function Login(props) {
               )}
               <p className="social-text">or Sign In With Social Platforms</p>
               <div className="social-media">
-                <a href="#" className="social-icon">
+                <a href="/#" className="social-icon">
                   <i className="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" className="social-icon">
+                <a href="/#" className="social-icon">
                   <i className="fab fa-twitter"></i>
                 </a>
-                <a href="#" className="social-icon">
+                <a href="/#" className="social-icon">
                   <i className="fab fa-google"></i>
                 </a>
-                <a href="#" className="social-icon">
+                <a href="/#" className="social-icon">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </div>
@@ -107,16 +102,16 @@ function Login(props) {
               </div>
               <p className="social-text">or Sign Up With Social Platforms</p>
               <div className="social-media">
-                <a href="#" className="social-icon">
+                <a href="/#" className="social-icon">
                   <i className="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" className="social-icon">
+                <a href="/#" className="social-icon">
                   <i className="fab fa-twitter"></i>
                 </a>
-                <a href="#" className="social-icon">
+                <a href="/#" className="social-icon">
                   <i className="fab fa-google"></i>
                 </a>
-                <a href="#" className="social-icon">
+                <a href="/#" className="social-icon">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </div>
