@@ -16,16 +16,25 @@ import history from "./history.js";
 import Login from "./components/Login/Login.jsx";
 import axios from "axios";
 
-import DashboardAdmin from "./components/Admin/DashboardAdmin";
+import AdminPage from "./components/Admin/AdminPage";
 import DashboardHR from './components/HR/DashboardHR'
 import DashboardEmployee from './components/Employee/DashboardEmployee'
 
 
+<<<<<<< HEAD
 function App() {
   const [data, setData] = useState({})
   const [loading, setLoading] = useState(false)
   const [pass, setPass] = useState("true")
   const [isLogin, setIsLogin] = useState(false)
+=======
+
+function App () {
+  const [data,setData] = useState({})
+  const [loading,setLoading] = useState(false)
+  const [pass,setPass] = useState("true")
+  const [isLogin,setIsLogin] = useState(false)
+>>>>>>> 39d97c4cc3e879b26981698821e7aba816dbe516
 
   // const history = useHistory()
   useEffect(() => {
@@ -179,6 +188,7 @@ function App() {
     <Router>
       <Switch>
         <Route
+<<<<<<< HEAD
           exact
           path="/login"
           render={() => data["Account"] == 1 ? (<Redirect to="/admin" />) : data["Account"] == 2 ? (<Redirect to="/hr" />) : //
@@ -217,6 +227,46 @@ function App() {
             )
           }
         />
+=======
+              exact
+              path="/login"
+              render={() => data["Account"] == 1 ? (<Redirect to="/admin" />) : data["Account"] == 2 ? (<Redirect to="/hr"/>) : //
+                  data["Account"] == 3 ? (<Redirect to="/employee" />) : (
+                      <Login
+                        loading={loading}
+                        pass={pass}
+                        onSubmit={handleSubmit}
+                      />
+                    )
+            }
+          />
+          <Route
+            // exact
+            path="/admin"
+            render={() =>
+              data["Account"] == 1 ? (
+                <AdminPage data={data} onlogout={handleLogout} />
+
+              ) : (
+                  <Redirect to="/login" />
+                )
+            }
+          />
+          <Route
+            // exact
+            path="/hr"
+            render={() =>
+              data["Account"] == 2 ? (
+                <DashboardHR
+                  data={data}
+                  onlogout={handleLogout}
+                />
+              ) : (
+                  <Redirect to="/login" />
+                )
+            }
+          />
+>>>>>>> 39d97c4cc3e879b26981698821e7aba816dbe516
 
         <Route
           // exact

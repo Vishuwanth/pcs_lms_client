@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import { useState, useEffect } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import axios from "axios";
+<<<<<<< HEAD
 import './LeaveApplicationEmpForm.css'
+=======
+import "../Employee/LeaveApplicationEmpForm.css"
+
+
+>>>>>>> 39d97c4cc3e879b26981698821e7aba816dbe516
 function LeaveApplicationEmpForm(props) {
     // state = {
     //     FromDateData: this.props.editData["FromDate"].slice(0, 10),
@@ -119,6 +125,10 @@ function LeaveApplicationEmpForm(props) {
                             </Col>
                         </Form.Group>
                     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 39d97c4cc3e879b26981698821e7aba816dbe516
                 </Form>
             </div>
         </div>

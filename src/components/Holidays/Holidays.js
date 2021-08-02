@@ -1,17 +1,17 @@
 import React from 'react'
 import { css } from "@emotion/core";
-import { AgGridReact, AgGridColumn } from "ag-grid-react";
+import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
 import { useState } from "react";
 import './Holidays.css'
-const override = css`
-  display: block;
-  margin: 0 auto;
-  margin-top: 45px;
-  border-color: red;
-`;
+// const override = css`
+//   display: block;
+//   margin: 0 auto;
+//   margin-top: 45px;
+//   border-color: red;
+// `;
 
 function Holidays() {
 

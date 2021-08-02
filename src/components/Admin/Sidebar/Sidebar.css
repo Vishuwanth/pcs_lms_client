@@ -1,0 +1,35 @@
+/* .menu-button{
+    background-color:#33d98f;
+    border:none;
+    width:2.5rem;
+    height:2.5rem;
+    border-radius:50%;
+    margin:0.5rem 0 0 0.5rem;
+    cursor:pointer;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+.menu-button::before,
+.menu-button::after{
+    content:"";
+    background-color:#fff;
+    height:2px;
+    width:1rem;
+    position:absolute;
+    transition:all 0.3s ease;
+}
+
+    &::before{
+        top:1rem;
+        transform:${props => props.clicked ? "rotate(135deg)" : "rotate(0)"}
+    }
+
+    &::after{
+        top:1.5rem;
+        transform:${props => props.clicked ? "rotate(-135deg)" : "rotate(0)"}
+    } */
