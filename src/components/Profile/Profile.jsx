@@ -19,12 +19,12 @@ function Profile(props) {
 
     useEffect(()=>{
         loadProfileDetails()
-    })
+    },[])
     
     function loadProfileDetails(){
         axios.get("https://pcs-lms.herokuapp.com/employee/"+props.data["_id"]+"/profile")
         .then(res=>{
-            console.log("here is the employee record for profile")
+            console.log("here is the employee record for profile...")
             console.log(res)
             console.log(res.data)
 
