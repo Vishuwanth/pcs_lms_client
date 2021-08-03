@@ -9,12 +9,16 @@ import { Button } from "react-bootstrap";
 import { AgGridReact, AgGridColumn } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import "ag-grid/dist/styles/theme-blue.css";
+
 
 
 import { useState } from "react";
 import { useEffect } from "react";
 
 
+const red = css`
+background-color:red`;
 
 const override = css`
   display: block;
@@ -29,10 +33,10 @@ function LeaveApplicationHRTable(props) {
   const [loading, setloading] = useState(true)
   const [columnDefs, setcolumnDefs] = useState([
     {
-        headerName: "Employee Name",
-        field: "EmployeeName",
-        sortable: true,
-      },
+      headerName: "Employee Name",
+      field: "EmployeeName",
+      sortable: true,
+    },
     {
       headerName: "Leave type",
       field: "Leavetype",
@@ -80,6 +84,7 @@ function LeaveApplicationHRTable(props) {
   ])
 
 
+
   var [rowData, setrowData] = useState([])
   const [defaultColDef, setdefaultColDef] = useState({
     resizable: true,
@@ -87,6 +92,7 @@ function LeaveApplicationHRTable(props) {
     filter: "agTextColumnFilter"
     // filter: true ,
   })
+
 
 
   // const [getRowHeight, setgetRowHeight] = useState(
@@ -118,7 +124,7 @@ function LeaveApplicationHRTable(props) {
         // this.leaveApplicationEmpObj = response.data;
         leaveApplicationHRObj = response.data
 
-        console.log("leaveApplicationHRObj::::",leaveApplicationHRObj)
+        console.log("leaveApplicationHRObj::::", leaveApplicationHRObj)
         // this.setState({ leaveApplicationEmpData: response.data });
         // this.setState({ loading: false });
         // this.rowDataT = [];
@@ -132,7 +138,7 @@ function LeaveApplicationHRTable(props) {
         leaveApplicationHRObj.map(data => {
           let temp = {
             data,
-            EmployeeName:data["EmployeeName"],
+            EmployeeName: data["EmployeeName"],
             Leavetype: data["Leavetype"],
             FromDate: data["FromDate"].slice(0, 10),
             ToDate: data["ToDate"].slice(0, 10),
@@ -152,6 +158,9 @@ function LeaveApplicationHRTable(props) {
         //setrowData(rowDataT)
         console.log("rowDataT values", rowDataT)
         setrowData(rowDataT)
+
+
+
         console.log("rowData after setrowData", rowData)
 
       })
@@ -196,14 +205,14 @@ function LeaveApplicationHRTable(props) {
     return (
       <FontAwesomeIcon
         icon={faTrash}
-        // onClick={() =>
-        //   onLeaveApplicationHRDelete(params.data.data["employee"][0]["_id"], params.data.data["_id"])
-        // }
+      // onClick={() =>
+      //   onLeaveApplicationHRDelete(params.data.data["employee"][0]["_id"], params.data.data["_id"])
+      // }
       />
     );
   }
   function renderEditButton(params) {
-    console.log(params);
+    // console.log(params);
     return (
       <FontAwesomeIcon
         icon={faEdit}
@@ -234,12 +243,14 @@ function LeaveApplicationHRTable(props) {
   //   };
 
 
+
+
   return (
     <div id="table-outer-div-scroll">
       <div className="heading-and-button">
-      <div>
-        <span id="role-title">Leave Requests</span><br/>
-        {/* <span id="role-title">Requests</span> */}
+        <div>
+          <span id="role-title">Leave Requests</span><br />
+          {/* <span id="role-title">Requests</span> */}
         </div>
 
         <Button
@@ -248,7 +259,7 @@ function LeaveApplicationHRTable(props) {
           onClick={props.onAddLeaveApplicationEmp}
         >
           <FontAwesomeIcon icon={faPlus} id="plus-icon" />
-        
+
         </Button>
       </div>
       <div id="clear-both" />
@@ -257,7 +268,7 @@ function LeaveApplicationHRTable(props) {
       {!loading ? (
         <div
           id="table-div"
-          className="ag-theme-balham"
+          className="ag-blue"
           style={{ height: "350px", width: "100%" }}
         >
           <AgGridReact
@@ -267,6 +278,14 @@ function LeaveApplicationHRTable(props) {
             rowData={rowData}
             pagination={true}
             paginationPageSize={10}
+            rowClassRules={
+
+              (params) => {
+                if (params.data.Status == "Approved") {
+                  return css={red}
+                }
+              }
+            }
           // getRowHeight={getRowHeight}
 
           />

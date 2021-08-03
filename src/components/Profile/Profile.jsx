@@ -19,12 +19,12 @@ function Profile(props) {
 
     useEffect(()=>{
         loadProfileDetails()
-    })
+    },[])
     
     function loadProfileDetails(){
         axios.get("https://pcs-lms.herokuapp.com/employee/"+props.data["_id"]+"/profile")
         .then(res=>{
-            console.log("here is the employee record for profile")
+            console.log("here is the employee record for profile...")
             console.log(res)
             console.log(res.data)
 
@@ -54,7 +54,7 @@ function Profile(props) {
                                 <Form.Label column sm={2}>
                                     Name
                                 </Form.Label>
-                                <Col sm={4} className="form-input">
+                                <Col sm={8} className="form-input">
                                     <Form.Control type="Text" placeholder={profileData.EmpName} value={profileData.EmpName} required disabled />
                                 </Col>
                             </Form.Group>
@@ -64,7 +64,7 @@ function Profile(props) {
                                 <Form.Label column sm={2}>
                                     Email
                                 </Form.Label>
-                                <Col sm={4} className="form-input">
+                                <Col sm={8} className="form-input">
                                     <Form.Control type="Text" placeholder={profileData.EmpEmail} value={profileData.EmpEmail} required disabled />
                                 </Col>
 
@@ -76,7 +76,7 @@ function Profile(props) {
                                 <Form.Label column sm={2}>
                                     Password
                                 </Form.Label>
-                                <Col sm={4} className="form-input">
+                                <Col sm={8} className="form-input">
                                     <Form.Control type="password" placeholder={profileData.EmpPassword} value={profileData.EmpPassword} required disabled />
                                 </Col>
                             </Form.Group>
@@ -86,7 +86,7 @@ function Profile(props) {
                                 <Form.Label column sm={2}>
                                     Gender
                                 </Form.Label>
-                                <Col sm={4} className="form-input">
+                                <Col sm={8} className="form-input">
                                     <Form.Control type="Text" placeholder={profileData.EmpGender} value={profileData.EmpGender} required disabled />
                                 </Col>
                             </Form.Group>
@@ -96,7 +96,7 @@ function Profile(props) {
                                 <Form.Label column sm={2}>
                                     Date Of Birth
                                 </Form.Label>
-                                <Col sm={4} className="form-input">
+                                <Col sm={8} className="form-input">
                                     <Form.Control type="Text" placeholder={profileData.EmpDOB} required disabled />
                                 </Col>
                             </Form.Group>
@@ -106,7 +106,7 @@ function Profile(props) {
                                 <Form.Label column sm={2}>
                                     Contact Number
                                 </Form.Label>
-                                <Col sm={4} className="form-input">
+                                <Col sm={8} className="form-input">
                                     <Form.Control type="Text" placeholder={profileData.EmpContact} value={profileData.EmpContact} required disabled />
                                 </Col>
                             </Form.Group>

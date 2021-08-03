@@ -52,8 +52,14 @@
 }
 
 #form{
-    padding:10px;
+   
+    
 }
 #form .row {
     margin-bottom:10px;
+}
+.leave-app-form{
+    padding:10px;
+    display: flex;
+    align-items: stretch;
 }

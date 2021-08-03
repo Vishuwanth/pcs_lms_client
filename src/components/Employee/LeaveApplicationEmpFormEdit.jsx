@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { useState, useEffect } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import axios from "axios";
-import "../Employee/LeaveApplicationEmpForm.css"
-
-
+import './LeaveApplicationEmpForm.css'
 function LeaveApplicationEmpForm(props) {
     // state = {
     //     FromDateData: this.props.editData["FromDate"].slice(0, 10),
@@ -41,6 +39,7 @@ function LeaveApplicationEmpForm(props) {
             <div id="role-form-outer-div">
                 <Form
                     id="form"
+                    className="leave-app-form"
                     onSubmit={e =>
                         props.onLeaveApplicationEmpEditUpdate(props.editData, e)
                     }
@@ -116,12 +115,11 @@ function LeaveApplicationEmpForm(props) {
                         <Form.Group as={Row} id="form-cancel-button">
                             <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
                                 <Button type="reset" onClick={props.onFormEditClose}>
-                                    cancel
+                                    Cancel
                                 </Button>
                             </Col>
                         </Form.Group>
                     </div>
-
                 </Form>
             </div>
         </div>
