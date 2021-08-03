@@ -1,7 +1,8 @@
 .home{
     display: flex;
     flex-direction:column ;
-
+    flex-wrap: wrap;
+    margin:auto;
 }
 
 @media (min-width:768px) {
@@ -18,7 +19,7 @@
     align-items: center;
     padding: 20px;
     border:rgba(0, 0, 0, 0.75)  1px;
-    width:90%;
+    width:100vw;
     margin-top:10px;
     margin-left:10px;
     border-radius: 12px;
@@ -50,7 +51,7 @@
 
 @media (min-width:768px) {
     .date-and-time-card{
-        width:40%;
+        width:100vw;
     }
     .date{
         font-size:large ;
@@ -59,4 +60,79 @@
     .time{
         font-size: large;
     }
+}
+.emp-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
+    padding: 20px;
+    border:rgba(0, 0, 0, 0.75)  1px;
+    
+    margin-top:10px;
+    margin-left:10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px -11px rgba(0, 0, 0, 0.75);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); */
+
+    text-align: center;
+    margin-right: 15px;
+    /* max-width: 90%; */
+    min-width: 80vw;
+    
+}
+@media (min-width:768px) {
+    .emp-card{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.pending-leaves-heading{
+    font-size: 25px;
+    padding:10px;
+    margin-right:auto;
+    
+}
+.leave-content{
+    display: flex;
+    justify-content: space-between;
+    min-width: 75%;
+    flex-wrap: wrap;
+}
+@media (min-width:768px){
+    .leave-content{
+        justify-content: space-around;
+    }
+}
+
+.accept-reject-buttons{
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.accept-reject-buttons button{
+    min-width:100px;
+    min-height: 50px;
+    border-radius: 10px;
+    padding:7px;
+    margin-right: 10px;
+    color:#fff;
+    border-width:0px;
+}
+.accept-reject-buttons .accept{
+    background-color: #2eb85c;
+}
+.accept-reject-buttons .reject{
+    background-color: #e55353
+    ;
+}
+
+@media (max-width:768px) {
+    .leave-content{
+        font-size: 12px;
+    }
+    
 }

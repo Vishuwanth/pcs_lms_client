@@ -74,13 +74,13 @@
 .navbar-right-content span {
 	margin-left: 10px;
 }
-.navbar-right-content {
+/* .navbar-right-content {
 	background-color: #5569dc;
 	border-radius: 10px;
 	padding: 5px;
 	color: #444;
 	font-weight: 500;
-}
+} */
 
 .navbar-right-content:hover {
 	text-align: center;
@@ -96,4 +96,19 @@
 
 .signed-in-user-heading {
 	font-size: 10px;
+}
+
+.collapse-navbar p.navbar-right-content {
+	background:transparent;
+	border-radius: 10px;
+	padding: 5px;
+	color: #444;
+	font-weight: 500;
+}
+.collapse-navbar div p.navbar-right-content{
+	background-color: #5569dc;
+	border-radius: 10px;
+	padding: 5px;
+	color: #444;
+	font-weight: 500;
 }

@@ -38,7 +38,7 @@ function DashboardAdmin(props) {
   const [redirect, setRedirect] = useState(true)
   const [checked, setChecked] = useState(true)
   console.log("starting value", checked)
-
+  
   const handleChange = (checked) => {
     console.log("switch");
     console.log("Start:", checked)
