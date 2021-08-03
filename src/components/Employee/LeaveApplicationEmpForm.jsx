@@ -17,7 +17,7 @@ function LeaveApplicationEmpForm(props) {
             <div className="form-container">
                 <h2 id="role-form-title">Apply Leave</h2>
                 <div id="role-form-outer-div">
-                    <Form id="form" onSubmit={props.onLeaveApplicationEmpSubmit}>
+                    <Form id="form" className="leave-app-form" onSubmit={props.onLeaveApplicationEmpSubmit}>
                         <div className='label-option-container'>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>

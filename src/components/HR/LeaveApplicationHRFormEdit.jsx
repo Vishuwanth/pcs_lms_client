@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Form, Button, Col, Row } from "react-bootstrap";
 import axios from "axios";
 import '../Employee/LeaveApplicationEmpForm.css'
+import './LeaveApplicationHRFormEdit.css'
 function LeaveApplicationHRFormEdit(props) {
     // FromDateData: this.props.editData["FromDate"].slice(0, 10),
     // ToDateData: this.props.editData["ToDate"].slice(0, 10),
@@ -28,6 +29,7 @@ function LeaveApplicationHRFormEdit(props) {
             <div id="role-form-outer-div">
                 <Form
                     id="form"
+                    className="hr-edit-form"
                     onSubmit={e =>
                         props.onLeaveApplicationHREditUpdate(props.editData, e)
                     }
