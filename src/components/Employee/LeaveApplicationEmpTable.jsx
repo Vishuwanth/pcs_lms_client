@@ -75,6 +75,7 @@ function LeaveApplicationEmpTable(props) {
     }
   ])
 
+ 
 
   var [rowData, setrowData] = useState([])
   const [defaultColDef, setdefaultColDef] = useState({
@@ -269,6 +270,7 @@ function LeaveApplicationEmpTable(props) {
             pagination={true}
             paginationPageSize={10}
           // getRowHeight={getRowHeight}
+          rowClassRules = {rowClassRules}
 
           />
 
