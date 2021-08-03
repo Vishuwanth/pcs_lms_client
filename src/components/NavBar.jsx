@@ -1,104 +1,67 @@
-import React from "react";
-import "./NavBar.css";
-import { Navbar, Nav } from "react-bootstrap";
-import pcs_logo from "./Images/pcs_logo.png"
-import Switch from "react-switch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
-
-import { Link } from "react-router-dom";
-
-
-
+import React from 'react'
+import './NavBar.css'
+import { Navbar, Nav } from 'react-bootstrap'
+import pcs_logo from './Images/pcs_logo.png'
+import Switch from 'react-switch'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 
 function NavBar(props) {
-<<<<<<< HEAD
-  // console.log(props.onlogout())
-  return (
-    <div>
-      <Navbar bg="light" expand="lg" className="nav-bar" fixed="top" id="main-nav">
-        <Navbar.Brand id="logo-anchor">
-          <img id="nav-bar-logo" src={pcs_logo} alt="company logo" />
+	// console.log(props.onlogout())
+	return (
+		<div>
+			<Navbar
+				bg='light'
+				expand='lg'
+				className='nav-bar'
+				sticky='top'
+				id='main-nav'>
+				<Navbar.Brand id='logo-anchor'>
+					<img id='nav-bar-logo' src={pcs_logo} alt='company logo' />
 
-          <span id="toggle-switch">
-            <Switch
-              checked={props.checked}
-              onChange={props.handleChange}
-              onColor="#5569dc"
-              onHandleColor="#ffffff"
-              handleDiameter={10}
-              uncheckedIcon={false}
-              checkedIcon={false}
-              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-              activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-              height={17}
-              width={35}
-              className="react-switch"
-              id="material-switch"
-            />
-          </span>
-        </Navbar.Brand>
+					<span id='toggle-switch'>
+						<Switch
+							checked={props.checked}
+							onChange={props.handleChange}
+							onColor='#5569dc'
+							onHandleColor='#ffffff'
+							handleDiameter={10}
+							uncheckedIcon={false}
+							checkedIcon={false}
+							boxShadow='0px 1px 5px rgba(0, 0, 0, 0.6)'
+							activeBoxShadow='0px 0px 1px 10px rgba(0, 0, 0, 0.2)'
+							height={17}
+							width={35}
+							// className='react-switch'
+							// id='material-switch'
+						/>
+					</span>
+				</Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+				<Navbar.Toggle aria-controls='basic-navbar-nav' />
 
-        <Navbar.Collapse id="logout-navbar-nav">
-          <Nav className="collapse-navbar">
-            <p onClick={props.onClick} className="navbar-right-content">
-              {props.loginInfo["Name"]}
-            </p>
-            <div>
-              
-                <p  onClick={props.onlogout} style={{ "cursor": "pointer" }} className="navbar-right-content">
-=======
-    // console.log(props.onlogout())
-    return (
-      <div>
-        <Navbar bg="light" expand="lg" className="nav-bar" fixed="top"  id="main-nav">
-          <Navbar.Brand id="logo-anchor">
-            <img id ="nav-bar-logo" src={pcs_logo} alt="company logo" />
-            
-            <span id="toggle-switch">
-                <Switch 
-                    checked={props.checked}
-                    onChange={props.handleChange}
-                    onColor="#5569dc"
-                    onHandleColor="#ffffff"
-                    handleDiameter={10}
-                    uncheckedIcon={false}
-                    checkedIcon={false}
-                    boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                    activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                    height={17}
-                    width={35}
-                    className="react-switch"
-                    id="material-switch"
-                    />
-            </span>
-            </Navbar.Brand>
-            
-          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-        
-          <Navbar.Collapse id="logout-navbar-nav">
-            <Nav className="collapse-navbar">             
-              <p onClick={props.onClick} className="navbar-right-content">
-                        {props.loginInfo["Name"]}
-                </p>
-                <div >
-                <a href="/login" onClick={props.onlogout} style={{"cursor":"pointer"}} className="navbar-right-content">
->>>>>>> 39d97c4cc3e879b26981698821e7aba816dbe516
-                  Log Out
-                  <span><FontAwesomeIcon icon={faPowerOff} id="plus-icon" /></span>
-                </p>
-             
-            </div>
-
-          </Nav>
-        </Navbar.Collapse>
-
-      </Navbar>
-    </div>
-  );
-
+				<Navbar.Collapse id='logout-navbar-nav'>
+					<Nav className='collapse-navbar my-2 my-lg-0'>
+						<p onClick={props.onClick} className='navbar-right-content'>
+							<span className='signed-in-user-heading'>Signed in as:</span>
+							{props.loginInfo['Name']}
+						</p>
+						<div>
+							<p
+								onClick={props.onlogout}
+								style={{ cursor: 'pointer' }}
+								className='navbar-right-content'>
+								Log Out
+								<span>
+									<FontAwesomeIcon icon={faPowerOff} id='plus-icon' />
+								</span>
+							</p>
+						</div>
+					</Nav>
+				</Navbar.Collapse>
+			</Navbar>
+		</div>
+	)
 }
 
-export default NavBar;
+export default NavBar

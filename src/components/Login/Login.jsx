@@ -153,26 +153,11 @@ function Login(props) {
             <img src={sign_up} className="image" alt="sign up" />
           </div>
         </div>
-<<<<<<< HEAD
-        <div className="loading">
-          <ScaleLoader
-            css={override}
-            sizeUnit={"px"}
-            size={150}
-            color={"#123abc"}
-            loading={props.loading}
-          />
-        </div>
-        
-      </div>
-    </>
-=======
 
       </div>
 
     </React.Fragment>
 
->>>>>>> 39d97c4cc3e879b26981698821e7aba816dbe516
   )
 }
 

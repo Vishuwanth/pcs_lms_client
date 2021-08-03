@@ -47,63 +47,6 @@ input{
   transition: 1s 0.7s ease-in-out;
 }
 
-<<<<<<< HEAD
- .container{
-   position: relative;
-   width: 100%;
-   min-height: 100vh;
-   background-color: #fff;
-   overflow: hidden;
- }
-
- .forms-container{
-   position:absolute;
-   width: 100%;
-   height: 100%;
-   top: 0;
-   left: 030%;
- }
-
- form #logo-img{
-   margin: auto;
-   width: 150px;
-   align-self: center;
-   margin-top: 20px;
-   margin-bottom: 20px;
- }
- .signin-signup{
-   position: absolute;
-   top: 50%;
-   transform: translate(-50%,-50%);
-   left: 50%;
-   width: 50%;
-   transition: 1s 0.7s ease-in-out;
-   display: grid;
-   grid-template-columns: 1fr;
-   z-index: 5;
-   
-   
- }
-
- .signin-signup form{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   padding: 0rem 5rem;
-   transition: all 0.2s 0.7s;
-   overflow: hidden;
-   grid-column: 1 / 2;
-   grid-row: 1 / 2;
- }
-
- form.sign-up-form{
-   opacity: 0;
-   z-index: 1;
- }
-
- form.sign-in-form{
-=======
 form{
   display: flex;
   flex-direction: column;
@@ -117,7 +60,6 @@ form{
 }
 
 form.sign-in-form{
->>>>>>> 39d97c4cc3e879b26981698821e7aba816dbe516
   z-index: 2;
 }
 
@@ -167,20 +109,6 @@ form.sign-up-form{
 }
 
 .button{
-<<<<<<< HEAD
-width: 180px;
-height: 49px;
-border: none;
-outline: none;
-border-radius: 49px;
-cursor: pointer;
-background-color: #5261ac;
-color: #fff;
-text-transform: uppercase;
-font-weight: 600;
-margin: 10px 0;
-transition: .5s;
-=======
   width: 150px;
   height: 49px;
   border: none;
@@ -193,7 +121,6 @@ transition: .5s;
   font-weight: 600;
   margin: 10px 0;
   transition: 0.5s;
->>>>>>> 39d97c4cc3e879b26981698821e7aba816dbe516
 }
 
 .button:hover{
