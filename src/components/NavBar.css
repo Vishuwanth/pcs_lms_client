@@ -1,93 +1,99 @@
 #main-nav {
-  /* width: 100%; */
-  height: 55px;
-  background-color: white !important;
-  -webkit-box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
-padding: 0px;
-padding-right: 10px;
-display: flex;
-justify-content: space-between;
+	/* width: 100%; */
+	position: sticky;
+	height: 55px;
+	background-color: white !important;
+	-webkit-box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
+	padding: 0px;
+	padding-right: 10px;
+	display: flex;
+	justify-content: space-between;
 }
 
 #nav-bar-logo {
-  height: 40px;
-  margin-left: 10px;
-  margin-top: 5px;
-  padding: 0px
+	height: 40px;
+	margin-left: 10px;
+	margin-top: 5px;
+	padding: 0px;
 }
-#logo-anchor{
-  padding: 0px;
-  margin: 0px;
-  /* float: left; */
+#logo-anchor {
+	padding: 0px;
+	margin: 0px;
+	/* float: left; */
 }
-#logout-navbar-nav{
-  /* background-color: red; */
-  width: 10%;
-  background-color: white;
-  /* float:right; */
-  /* margin: 10px; */
-  /* display: flex;
-  justify-content: flex-end; */
-  
-
+#logout-navbar-nav {
+	/* background-color: red; */
+	width: 50px !important;
+	background-color: transparent;
+	border-top: 0px;
+	/* float:right; */
+	/* margin: 10px; */
+	/* display: flex;
+	justify-content: flex-end; */
 }
-#toggle-switch{
-  margin-left: 20px;
-  height: 50px;
-  /* margin-top: 20px; */
-  float: right;
-  /* padding-top: 20px; */
-  display: inline-block;
-  padding-top: 15px;
+#toggle-switch {
+	margin-left: 20px;
+	height: 50px;
+	/* margin-top: 20px; */
+	float: right;
+	/* padding-top: 20px; */
+	display: inline-block;
+	padding-top: 15px;
 }
-.navbar-right-content{
-  text-decoration: none;
-  color: black;
-  margin-right:30px; 
-  margin: 10px; 
+.navbar-right-content {
+	text-decoration: none;
+	color: black;
+	margin-right: 30px;
+	margin: 10px;
 }
 .navBar-username {
-  float: right;
-  margin-right: 30px;
+	float: right;
+	margin-right: 30px;
 }
 
-.collapse-navbar{
-  margin-left: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.collapse-navbar {
+	margin-left: auto;
+	display: flex;
+	align-items: flex-end;
+
+	background-color: #fff;
+}
+@media screen and (max-width: 992px) {
+	.collapse-navbar {
+		max-width: 150px;
+		-webkit-box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
+		-moz-box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
+		box-shadow: 0px 10px 13px -11px rgba(0, 0, 0, 0.75);
+		border-radius: 10px;
+		border: 1px solid #444;
+	}
 }
 
-.navbar-right-content span{
-  
-  margin-left: 10px;
+.navbar-right-content span {
+	margin-left: 10px;
 }
-.collapse-navbar .navbar-right-content{
-  border-radius: 10px;
-  padding: 5px;
-  color: #444;
-  font-weight: 500;
-}
-.collapse-navbar div a{
-  background-color: #5569dc;
-  border-radius: 10px;
-  padding: 5px;
-  color: #444;
-  font-weight: 500;
+.navbar-right-content {
+	background-color: #5569dc;
+	border-radius: 10px;
+	padding: 5px;
+	color: #444;
+	font-weight: 500;
 }
 
-
-
-.collapse-navbar div a:hover{
-  background-color: #5569dc50;
-  border-radius: 10px;
-  padding: 5px;
-  color: #444;
-  font-weight: 600;
+.navbar-right-content:hover {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	align-self: center;
+	background-color: #5569dc50;
+	border-radius: 10px;
+	padding: 5px;
+	color: #77be45;
+	font-weight: 600;
 }
 
-.collapse-navbar div{
-  min-width: 200px;
+.signed-in-user-heading {
+	font-size: 10px;
 }
