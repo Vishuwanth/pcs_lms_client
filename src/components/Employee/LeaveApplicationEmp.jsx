@@ -4,7 +4,12 @@ import axios from "axios";
 import LeaveApplicationEmpTable from "./LeaveApplicationEmpTable.jsx";
 import LeaveApplicationEmpForm from "./LeaveApplicationEmpForm.jsx";
 import LeaveApplicationEmpFormEdit from "./LeaveApplicationEmpFormEdit.jsx";
+import { format, isToday,compareDesc } from 'date-fns'
+
+
 import { tr } from "react-dom-factories";
+
+
 function LeaveApplicationEmp(props) {
 
   // console.log("LeaveApplicationEmp", props)
@@ -46,6 +51,46 @@ function LeaveApplicationEmp(props) {
     }
     setTable(true)
 
+  
+    var fromDateFNS = new Date(event.target[2].value)
+    var toDateFNS  = new Date(event.target[3].value)
+
+    const result = compareDesc(
+      new Date(event.target[2].value),
+      new Date(event.target[3].value)
+    )
+    console.log("result",result) // if result = -1 then fromDate is bigger than toDate
+    console.log("date",isToday(fromDateFNS))
+    
+    if (result===1){
+      let todaysDate =  new Date()
+      console.log("Todays Date",todaysDate)
+      // console.log("compared",compareDesc(todaysDate,fromDateFNS))
+      // if(compareDesc(todaysDate,fromDateFNS)==-1 || compareDesc(todaysDate,fromDateFNS)==0){
+      //   console.log("Leave Applied")
+      // }else{
+      //   console.log("Everything is not fine")
+      // }
+     
+      if(fromDateFNS.getUTCFullYear()>=todaysDate.getUTCFullYear()){
+        if(fromDateFNS.getMonth()>=todaysDate.getMonth()){
+          if(fromDateFNS.getUTCDate()>=todaysDate.getUTCDate()){
+              console.log("Leave should get applied")
+          }
+          else{
+            console.log("Leave Not Applied")
+          }
+              
+        }else{
+          console.log("Leave Not Applied")
+        }
+      }else{
+        console.log("Leave Not Applied")
+      }
+    }
+    else{
+      window.alert("From Date should be less the Today's Date")
+    }
     let body = {
       Name : event.target[0].value,
       Leavetype: event.target[1].value,
