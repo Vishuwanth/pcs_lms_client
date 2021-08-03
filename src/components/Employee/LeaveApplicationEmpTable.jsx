@@ -270,7 +270,7 @@ function LeaveApplicationEmpTable(props) {
             pagination={true}
             paginationPageSize={10}
           // getRowHeight={getRowHeight}
-          rowClassRules = {rowClassRules}
+          // rowClassRules = {rowClassRules}
 
           />
 

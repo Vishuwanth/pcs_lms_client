@@ -86,9 +86,10 @@ export const HRHome = (props) => {
                             <div className="emp-card" key={id}>
                                 <div className="leave-content">
                                     <p><strong>Employee</strong> : {user.EmployeeName}</p>
+                                    <p><strong>Reason</strong> :{user.Reasonforleave}</p>
                                     <p><strong>From</strong> :{user.FromDate.slice(0, 10)}</p>
                                     <p><strong>To</strong> :{user.ToDate.slice(0, 10)}</p>
-                                    <p><strong>Reason</strong> :{user.Reasonforleave}</p>
+                                    
                                 </div>
                                 <div className="accept-reject-buttons">
                                     <button className="accept"onClick={() => approveOrReject(true, user._id)}>Approve</button>

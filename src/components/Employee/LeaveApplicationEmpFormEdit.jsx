@@ -39,6 +39,7 @@ function LeaveApplicationEmpForm(props) {
             <div id="role-form-outer-div">
                 <Form
                     id="form"
+                    className="leave-app-form"
                     onSubmit={e =>
                         props.onLeaveApplicationEmpEditUpdate(props.editData, e)
                     }

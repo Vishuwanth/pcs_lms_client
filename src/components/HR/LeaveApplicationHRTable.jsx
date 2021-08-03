@@ -9,6 +9,8 @@ import { Button } from "react-bootstrap";
 import { AgGridReact, AgGridColumn } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import "ag-grid/dist/styles/theme-blue.css";
+
 
 
 import { useState } from "react";
@@ -79,6 +81,7 @@ function LeaveApplicationHRTable(props) {
     }
   ])
 
+  
 
   var [rowData, setrowData] = useState([])
   const [defaultColDef, setdefaultColDef] = useState({
@@ -87,6 +90,7 @@ function LeaveApplicationHRTable(props) {
     filter: "agTextColumnFilter"
     // filter: true ,
   })
+  var rowClassRules ={}
 
 
   // const [getRowHeight, setgetRowHeight] = useState(
@@ -152,6 +156,22 @@ function LeaveApplicationHRTable(props) {
         //setrowData(rowDataT)
         console.log("rowDataT values", rowDataT)
         setrowData(rowDataT)
+         rowClassRules = {
+    
+          // apply green to 2008
+          'rag-green-outer': function(params) { 
+            console.log(params.Status)
+            console.log("colors")
+            return params.Status === "2"; },
+      
+          // apply amber 2004
+          'rag-amber-outer': function(params) { return params.Status === "1"; },
+      
+          // apply red to 2000
+          'rag-red-outer': function(params) { return params.Status === "3"; }
+      }
+        
+      
         console.log("rowData after setrowData", rowData)
 
       })
@@ -203,7 +223,7 @@ function LeaveApplicationHRTable(props) {
     );
   }
   function renderEditButton(params) {
-    console.log(params);
+    // console.log(params);
     return (
       <FontAwesomeIcon
         icon={faEdit}
@@ -234,6 +254,8 @@ function LeaveApplicationHRTable(props) {
   //   };
 
 
+
+
   return (
     <div id="table-outer-div-scroll">
       <div className="heading-and-button">
@@ -257,7 +279,7 @@ function LeaveApplicationHRTable(props) {
       {!loading ? (
         <div
           id="table-div"
-          className="ag-theme-balham"
+          className="ag-blue"
           style={{ height: "350px", width: "100%" }}
         >
           <AgGridReact
@@ -267,6 +289,7 @@ function LeaveApplicationHRTable(props) {
             rowData={rowData}
             pagination={true}
             paginationPageSize={10}
+            rowClassRules = {rowClassRules}
           // getRowHeight={getRowHeight}
 
           />
