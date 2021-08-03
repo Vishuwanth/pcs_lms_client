@@ -9,7 +9,7 @@ import { Button } from "react-bootstrap";
 import { AgGridReact, AgGridColumn } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
-
+import "ag-grid/dist/styles/theme-blue.css";
 
 
 import { useState } from "react";
@@ -153,7 +153,7 @@ function EmployeesListTable() {
 
                             <div
                                 id="table-div"
-                                className="ag-theme-balham"
+                                className="ag-blue"
                                 style={{ height: "550px", width: "100%" }}
                             >
                                 <h1 className="employees-heading">Employees</h1>

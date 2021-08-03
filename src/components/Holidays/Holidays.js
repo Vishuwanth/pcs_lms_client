@@ -3,7 +3,7 @@ import { css } from "@emotion/core";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
-
+import "ag-grid/dist/styles/theme-blue.css";
 import { useState } from "react";
 import './Holidays.css'
 // const override = css`
@@ -87,7 +87,7 @@ function Holidays() {
             <p className="holiday">Holidays List of Year 2021</p>
             <div
                 id="table-div"
-                className="ag-theme-balham "
+                className="ag-blue "
                 style={{ height: "380px", width: "100%" }}
             >
                 <AgGridReact
