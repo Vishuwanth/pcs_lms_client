@@ -85,7 +85,7 @@ function LeaveApplicationHRTable(props) {
 		resizable: true,
 		width: 200,
 		filter: 'agTextColumnFilter',
-		// filter: true ,
+		// filter: true,
 	})
 
 	// const [getRowHeight, setgetRowHeight] = useState(
@@ -246,14 +246,14 @@ function LeaveApplicationHRTable(props) {
 				<div
 					id='table-div'
 					className='ag-blue'
-					style={{ height: '350px', width: '100%' }}>
+					style={{ height: '350px', width: '100%', padding: '10px' }}>
 					<AgGridReact
 						columnDefs={columnDefs}
 						defaultColDef={defaultColDef}
 						// columnTypes={columnTypes}
 						rowData={rowData}
 						pagination={true}
-						paginationPageSize={10}
+						paginationPageSize={20}
 						rowClassRules={(params) => {
 							if (params.data.Status == 'Approved') {
 								return (css = { red })

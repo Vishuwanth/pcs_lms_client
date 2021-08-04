@@ -42,10 +42,10 @@ function NavBar(props) {
 
 				<Navbar.Collapse id='logout-navbar-nav'>
 					<Nav className='collapse-navbar my-2 my-lg-0'>
-						<p onClick={props.onClick} className='navbar-right-content'>
+						<div onClick={props.onClick} className='navbar-right-content'>
 							<span>Signed in as:</span>
-							<strong>{props.loginInfo['Name']}</strong>
-						</p>
+							<span className='strong'>{props.loginInfo['Name']}</span>
+						</div>
 						<div>
 							<p
 								onClick={props.onlogout}
@@ -53,7 +53,7 @@ function NavBar(props) {
 								className='navbar-right-content'>
 								Log Out
 								<span>
-									<FontAwesomeIcon icon={faPowerOff} id='plus-icon' />
+									<i class='fas fa-sign-out-alt'></i>
 								</span>
 							</p>
 						</div>
