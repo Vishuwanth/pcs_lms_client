@@ -22,10 +22,17 @@
 	min-width: 100%;
 	border-radius: 12px;
 	box-shadow: 0 5px 20px -11px rgba(0, 0, 0, 0.75);
+	border-top: 5px solid #5569dc;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 	/* box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); */
 
 	text-align: center;
 	margin-right: 10px;
+}
+
+.time-card:hover {
+	border-top: 5px solid #33d98f;
 }
 
 @media screen and (max-width: 540px) {
@@ -74,11 +81,20 @@
 	margin-right: 10px;
 	border-radius: 12px;
 	box-shadow: 0 5px 20px -11px rgba(0, 0, 0, 0.75);
+	border-left: 10px solid #5569dc;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 	/* box-shadow: 0 0 20px rgba(0, 0, 0, 0.75); */
 
 	text-align: center;
 	margin-right: 15px;
+	transition: all 0.3s ease-in-out;
 	/* max-width: 90%; */
+}
+.emp-card:hover {
+	border-left: 10px solid #33d98f;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 }
 
 @media screen and (max-width: 768px) {
