@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useState, useEffect } from 'react'
 import { format, differenceInDays } from 'date-fns'
 import './HRHome.css'
@@ -6,16 +7,16 @@ import axios from 'axios'
 export const HRHome = (props) => {
 	var [date, setDate] = useState(new Date())
 	var [leaveData, setLeaveData] = useState([])
-	var [onAccept, setonAccept] = useState()
+	// var [onAccept, setonAccept] = useState()
 
 	useEffect(() => {
 		loadPendingLeaveRequests()
-		console.log('adfasdfadf', leaveData)
-		// var timer = setInterval(() => setDate(new Date()), 1000)
-		// return function cleanup() {
-		// 	clearInterval(timer)
-		// }
-	}, [setLeaveData])
+		// console.log('adfasdfadf', leaveData)
+		var timer = setInterval(() => setDate(new Date()), 1000)
+		return function cleanup() {
+			clearInterval(timer)
+		}
+	}, [date])
 
 	const loadPendingLeaveRequests = async () => {
 		await axios
@@ -40,18 +41,18 @@ export const HRHome = (props) => {
 		let body = {
 			Status: Status,
 		}
-		console.log('Body', body)
+		// console.log('Body', body)
 		//leave id
-		console.log('id', _id)
+		// console.log('id', _id)
 		axios
 			.put('https://pcs-lms.herokuapp.com/leave-application-hr/' + _id, body, {
 				headers: {
 					authorization: localStorage.getItem('token') || '',
 				},
 			})
-			.then((res) => {
-				console.log(res)
-			})
+			// .then((res) => {
+			// 	console.log(res)
+			// })
 			.catch((err) => {
 				console.log(err)
 			})
@@ -73,7 +74,8 @@ export const HRHome = (props) => {
 							new Date(user.ToDate),
 							new Date(user.FromDate)
 						)
-						console.log(diff)
+
+						// eslint-disable-next-line eqeqeq
 						if (user.Status == 1) {
 							return (
 								<div className='emp-card' key={id}>

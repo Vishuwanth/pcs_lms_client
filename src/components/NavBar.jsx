@@ -3,8 +3,6 @@ import './NavBar.css'
 import { Navbar, Nav } from 'react-bootstrap'
 import pcs_logo from './Images/pcs_logo.png'
 import Switch from 'react-switch'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 
 function NavBar(props) {
 	// console.log(props.onlogout())

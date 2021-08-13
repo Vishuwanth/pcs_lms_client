@@ -6,7 +6,7 @@ export const Employeehome = (props) => {
 	var [date, setDate] = useState(new Date())
 
 	useEffect(() => {
-		console.log('useEffect called')
+		// console.log('useEffect called')
 		getLeaveBalance()
 
 		var timer = setInterval(() => setDate(new Date()), 1000)
@@ -31,7 +31,7 @@ export const Employeehome = (props) => {
 				// console.log("Leave balance")
 				// console.log("res",res.data.leaveBalance)
 				localStorage.setItem('leaveBalance', res.data.leaveBalance)
-				console.log('leave bal fetched')
+				// console.log('leave bal fetched')
 			})
 			.catch((err) => {
 				console.log('err', err)

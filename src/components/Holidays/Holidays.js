@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+
 import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham.css'
@@ -14,6 +14,7 @@ import './Holidays.css'
 // `;
 
 function Holidays() {
+	// eslint-disable-next-line no-unused-vars
 	const [columnDefs, setcolumnDefs] = useState([
 		{
 			headerName: 'SNo',
@@ -32,6 +33,7 @@ function Holidays() {
 		},
 	])
 
+	// eslint-disable-next-line no-unused-vars
 	const [defaultColDef, setdefaultColDef] = useState({
 		resizable: true,
 		width: 350,

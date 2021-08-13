@@ -1,15 +1,11 @@
+/* eslint-disable eqeqeq */
 import React, { useState, useEffect } from 'react'
 import { Switch } from 'react-router-dom'
 import './App.css'
 
 // import axios from "axios";
 import jwt from 'jsonwebtoken'
-import {
-	BrowserRouter as Router,
-	Route,
-	Link,
-	Redirect,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import history from './history.js'
 import Login from './components/Login/Login.jsx'
@@ -23,6 +19,7 @@ function App() {
 	const [data, setData] = useState({})
 	const [loading, setLoading] = useState(false)
 	const [pass, setPass] = useState('true')
+	// eslint-disable-next-line no-unused-vars
 	const [isLogin, setIsLogin] = useState(false)
 
 	// const history = useHistory()
@@ -89,7 +86,7 @@ function App() {
 						decodedData.Account == 3
 					)
 				) {
-					console.log('Login failed')
+					// console.log('Login failed')
 					setPass(false)
 					setLoading(false)
 				} else {

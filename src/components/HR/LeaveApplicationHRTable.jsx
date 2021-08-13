@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+/* eslint-disable array-callback-return */
+import React from 'react'
 
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { RingLoader } from 'react-spinners'
 import { css } from '@emotion/core'
-import { Button } from 'react-bootstrap'
-import { AgGridReact, AgGridColumn } from 'ag-grid-react'
+
+import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham.css'
 import 'ag-grid/dist/styles/theme-blue.css'
@@ -26,8 +27,10 @@ const override = css`
 `
 
 function LeaveApplicationHRTable(props) {
+	// eslint-disable-next-line no-unused-vars
 	const [leaveApplicationHRData, setleaveApplicationHRData] = useState([])
 	const [loading, setloading] = useState(true)
+	// eslint-disable-next-line no-unused-vars
 	const [columnDefs, setcolumnDefs] = useState([
 		{
 			headerName: 'Employee Name',
@@ -81,6 +84,7 @@ function LeaveApplicationHRTable(props) {
 	])
 
 	var [rowData, setrowData] = useState([])
+	// eslint-disable-next-line no-unused-vars
 	const [defaultColDef, setdefaultColDef] = useState({
 		resizable: true,
 		width: 200,
@@ -98,6 +102,10 @@ function LeaveApplicationHRTable(props) {
 
 	useEffect(() => {
 		loadLeaveApplicationHRData()
+		return () => {
+			setloading(false)
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const loadLeaveApplicationHRData = () => {
@@ -111,7 +119,7 @@ function LeaveApplicationHRTable(props) {
 				// this.leaveApplicationEmpObj = response.data;
 				leaveApplicationHRObj = response.data
 
-				console.log('leaveApplicationHRObj::::', leaveApplicationHRObj)
+				// console.log('leaveApplicationHRObj::::', leaveApplicationHRObj)
 				// this.setState({ leaveApplicationEmpData: response.data });
 				// this.setState({ loading: false });
 				// this.rowDataT = [];
@@ -120,7 +128,7 @@ function LeaveApplicationHRTable(props) {
 
 				setloading(false)
 				rowDataT = []
-				console.log(leaveApplicationHRObj)
+				// console.log(leaveApplicationHRObj)
 				// let data=this.educationObj.education["0"];  already commented this line
 				leaveApplicationHRObj.map((data) => {
 					let temp = {
@@ -141,10 +149,10 @@ function LeaveApplicationHRTable(props) {
 				// this.setState({ rowData: this.rowDataT });
 
 				//setrowData(rowDataT)
-				console.log('rowDataT values', rowDataT)
+				// console.log('rowDataT values', rowDataT)
 				setrowData(rowDataT)
 
-				console.log('rowData after setrowData', rowData)
+				// console.log('rowData after setrowData', rowData)
 			})
 			.catch((error) => {
 				console.log(error)
@@ -202,12 +210,15 @@ function LeaveApplicationHRTable(props) {
 	}
 
 	const status = (s) => {
+		// eslint-disable-next-line eqeqeq
 		if (s == 1) {
 			return 'Pending'
 		}
+		// eslint-disable-next-line eqeqeq
 		if (s == 2) {
 			return 'Approved'
 		}
+		// eslint-disable-next-line eqeqeq
 		if (s == 3) {
 			return 'Rejected'
 		}
@@ -255,6 +266,7 @@ function LeaveApplicationHRTable(props) {
 						pagination={true}
 						paginationPageSize={20}
 						rowClassRules={(params) => {
+							// eslint-disable-next-line eqeqeq
 							if (params.data.Status == 'Approved') {
 								return (css = { red })
 							}
