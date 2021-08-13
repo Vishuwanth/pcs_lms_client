@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { useState, useEffect } from 'react'
+import React from 'react'
+import { useState } from 'react'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 import './LeaveApplicationEmpForm.css'
 function LeaveApplicationEmpForm(props) {
@@ -58,16 +58,19 @@ function LeaveApplicationEmpForm(props) {
 								</option>
 								<option
 									value='Sick Leave'
+									// eslint-disable-next-line eqeqeq
 									selected={props.editData['Leavetype'] == 'Sick Leave'}>
 									Sick Leave
 								</option>
 								<option
 									value='Casual Leave'
+									// eslint-disable-next-line eqeqeq
 									selected={props.editData['Leavetype'] == 'Casual Leave'}>
 									Casual Leave
 								</option>
 								<option
 									value='Privilege Leave'
+									// eslint-disable-next-line eqeqeq
 									selected={props.editData['Leavetype'] == 'Privilege Leave'}>
 									Privilege Leave
 								</option>

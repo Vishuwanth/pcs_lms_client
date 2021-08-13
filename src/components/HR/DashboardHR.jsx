@@ -23,7 +23,7 @@ function DashboardHr(props) {
 	const [checked, setChecked] = useState(true)
 
 	const handleChange = (checked) => {
-		console.log('checked', checked)
+		// console.log('checked', checked)
 		if (checked === true) {
 			document.getElementById('sidebar').setAttribute('class', 'display-block')
 		} else {

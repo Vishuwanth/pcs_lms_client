@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+/* eslint-disable eqeqeq */
+/* eslint-disable array-callback-return */
+import React from 'react'
 import './LeaveApplicationEmpTable.css'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,7 +8,7 @@ import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { RingLoader } from 'react-spinners'
 import { css } from '@emotion/core'
 import { Button } from 'react-bootstrap'
-import { AgGridReact, AgGridColumn } from 'ag-grid-react'
+import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham.css'
 import 'ag-grid/dist/styles/theme-blue.css'
@@ -24,6 +26,7 @@ const override = css`
 function LeaveApplicationEmpTable(props) {
 	const [leaveApplicationEmpData, setleaveApplicationEmpData] = useState([])
 	const [loading, setloading] = useState(true)
+	// eslint-disable-next-line no-unused-vars
 	const [columnDefs, setcolumnDefs] = useState([
 		{
 			headerName: 'Leave type',
@@ -72,6 +75,7 @@ function LeaveApplicationEmpTable(props) {
 	])
 
 	var [rowData, setrowData] = useState([])
+	// eslint-disable-next-line no-unused-vars
 	const [defaultColDef, setdefaultColDef] = useState({
 		resizable: true,
 		width: 235,
@@ -85,21 +89,6 @@ function LeaveApplicationEmpTable(props) {
 
 	var leaveApplicationEmpObj = []
 	var rowDataT = []
-
-	useEffect(() => {
-		loadLeaveApplicationEmpData()
-		getLeaveBalance()
-		return () => {
-			setloading(false)
-		}
-	}, [])
-
-	useEffect(() => {
-		console.log('useEffect called')
-		getLeaveBalance()
-	})
-
-	// function to load leave Balance when dashboard is loaded
 	const getLeaveBalance = async () => {
 		await axios
 			.get(
@@ -116,7 +105,7 @@ function LeaveApplicationEmpTable(props) {
 				// console.log("Leave balance")
 				// console.log("res",res.data.leaveBalance)
 				localStorage.setItem('leaveBalance', res.data.leaveBalance)
-				console.log('leave bal fetched')
+				// console.log('leave bal fetched')
 			})
 			.catch((err) => {
 				console.log('err', err)
@@ -174,6 +163,22 @@ function LeaveApplicationEmpTable(props) {
 				console.log(error)
 			})
 	}
+
+	useEffect(() => {
+		loadLeaveApplicationEmpData()
+		getLeaveBalance()
+		return () => {
+			setloading(false)
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [leaveApplicationEmpData])
+
+	useEffect(() => {
+		// console.log('useEffect called')
+		getLeaveBalance()
+	})
+
+	// function to load leave Balance when dashboard is loaded
 
 	const onLeaveApplicationEmpDelete = async (e1, e2) => {
 		// console.log(e1, e2);

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './LeaveApplicationEmpForm.css'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 

@@ -1,19 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './EmployeesListTable.css'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHistory } from '@fortawesome/free-solid-svg-icons'
+import { faHistory, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { RingLoader } from 'react-spinners'
 import { css } from '@emotion/core'
 import { Button } from 'react-bootstrap'
-import { AgGridReact, AgGridColumn } from 'ag-grid-react'
+// import { Button } from 'react-bootstrap'
+import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham.css'
 import 'ag-grid/dist/styles/theme-blue.css'
+import { format } from 'date-fns'
+import EmployeeProfile from './EmployeeProfile'
 
 import { useState } from 'react'
 import { useEffect } from 'react'
-import EmpLeaveHistory from './EmpLeaveHistory'
+import NewEmpForm from './NewEmpForm'
 
 const override = css`
 	display: block;
@@ -24,8 +27,12 @@ const override = css`
 
 function EmployeesListTable() {
 	// const [employeeList, setemployeeList] = useState([])
-	const [showEmpDetails, setshowEmpDetails] = useState(true)
+	const [showEmpDetails, setShowEmpDetails] = useState(true)
 	const [loading, setloading] = useState(true)
+	const [showEmpProfile, setShowEmpProfile] = useState(false)
+	// eslint-disable-next-line no-unused-vars
+
+	// eslint-disable-next-line no-unused-vars
 	const [columnDefs, setcolumnDefs] = useState([
 		{
 			headerName: 'Id',
@@ -62,22 +69,32 @@ function EmployeesListTable() {
 			field: 'View Leave Histosty',
 			filter: false,
 			width: 30,
-			cellRendererFramework: renderLeaveHistoryButton.bind(this),
+			cellRendererFramework: renderEmpProfileButton.bind(this),
+		},
+		{
+			headerName: '',
+			field: 'Delete Employee',
+			filter: false,
+			width: 30,
+			cellRendererFramework: renderDeleteButton.bind(this),
 		},
 	])
 
 	var [rowData, setrowData] = useState([])
+	const [emp, setEmp] = useState({})
 
 	useEffect(() => {
 		loadEmployeeListTable()
 		return () => {
 			setloading(false)
 		}
-	}, [])
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [showEmpDetails])
 
 	var employeeListObj = []
 	var rowDataT = []
 
+	// eslint-disable-next-line no-unused-vars
 	const [defaultColDef, setdefaultColDef] = useState({
 		resizable: true,
 		width: 200,
@@ -85,18 +102,37 @@ function EmployeesListTable() {
 		// filter: true ,
 	})
 
-	function renderLeaveHistoryButton(params) {
+	function renderEmpProfileButton(params) {
 		return (
 			<FontAwesomeIcon
 				icon={faHistory}
-				onClick={() => handleEmpLeaveHistory(params.data.data)}
+				onClick={() => handleEmpProfile(params.data.data)}
+			/>
+		)
+	}
+	function renderDeleteButton(params) {
+		return (
+			<FontAwesomeIcon
+				icon={faTrash}
+				onClick={() => handleDeleteProfile(params.data.data)}
 			/>
 		)
 	}
 
-	const handleEmpLeaveHistory = (empObj) => {
-		setshowEmpDetails(false)
+	const handleEmpProfile = (empObj) => {
+		setShowEmpDetails(!showEmpDetails)
+		setShowEmpProfile(!showEmpProfile)
+		console.log(empObj)
+		return setEmp(empObj)
+	}
 
+	const handleCancelButton = () => {
+		console.log('Cancel')
+		setShowEmpProfile(false)
+		setShowEmpDetails(true)
+	}
+
+	const handleDeleteProfile = (empObj) => {
 		console.log(empObj)
 	}
 
@@ -108,7 +144,7 @@ function EmployeesListTable() {
 				},
 			})
 			.then((response) => {
-				console.log('all emp details', response.data)
+				// console.log('all emp details', response.data)
 				employeeListObj = response.data
 				//   rowData=response.data
 
@@ -119,20 +155,53 @@ function EmployeesListTable() {
 					let temp = {
 						data,
 						Id: index + 1,
-						'Employee Name': data['FirstName'] + data['LastName'],
+						'Employee Name': data['FirstName'] + ' ' + data['LastName'],
 						Email: data['Email'],
 						'Contact Number': data['ContactNo'],
-						DOB: data['DOB'].slice(0, 10),
+						DOB: format(new Date(data['DOB']), 'dd/MM/yyyy'),
 						Gender: data['Gender'],
 					}
-					rowDataT.push(temp)
+					return rowDataT.push(temp)
 				})
-				console.log('row data temp', rowDataT)
+				// console.log('row data temp', rowDataT)
 				setrowData(rowDataT)
 			})
 			.catch((error) => {
-				console.log(error)
+				console.log('error', error)
 			})
+	}
+
+	const onAddNewEmp = () => {
+		// console.log('false')
+		setShowEmpDetails(false)
+	}
+
+	const handleNewEmployee = async (e) => {
+		e.preventDefault()
+
+		if (e.target[4].value !== e.target[5].value) {
+			window.alert("passwords doesn't match")
+		} else {
+			let body = {
+				FirstName: e.target[0].value,
+				MiddleName: e.target[1].value,
+				LastName: e.target[2].value,
+				Email: e.target[3].value,
+				Password: e.target[4].value,
+				Gender: e.target[6].value,
+				DOB: e.target[7].value,
+				ContactNo: e.target[8].value,
+				Account: e.target[9].value,
+			}
+			// console.log(body)
+
+			await axios
+				.post('https://pcs-lms.herokuapp.com/employee', body)
+				.then((res) => {
+					setloading(false)
+					setShowEmpDetails(true)
+				})
+		}
 	}
 
 	return (
@@ -144,7 +213,16 @@ function EmployeesListTable() {
 							id='table-div'
 							className='ag-blue'
 							style={{ height: '550px', width: '100%', padding: '10px' }}>
-							<h1 className='employees-heading'>Employees</h1>
+							<div className='heading-and-button'>
+								<div>
+									<span id='role-title'>Employee</span>
+								</div>
+
+								<Button variant='primary' id='add-button' onClick={onAddNewEmp}>
+									<FontAwesomeIcon icon={faPlus} id='plus-icon' />
+								</Button>
+							</div>
+
 							<AgGridReact
 								columnDefs={columnDefs}
 								defaultColDef={defaultColDef}
@@ -168,7 +246,16 @@ function EmployeesListTable() {
 					)}
 				</div>
 			) : (
-				<EmpLeaveHistory />
+				<div>
+					{showEmpProfile ? (
+						<EmployeeProfile
+							emp={emp}
+							handleCancelButton={handleCancelButton}
+						/>
+					) : (
+						<NewEmpForm handleNewEmployee={handleNewEmployee} />
+					)}
+				</div>
 			)}
 		</React.Fragment>
 	)
