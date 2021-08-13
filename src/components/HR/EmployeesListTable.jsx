@@ -253,7 +253,10 @@ function EmployeesListTable() {
 							handleCancelButton={handleCancelButton}
 						/>
 					) : (
-						<NewEmpForm handleNewEmployee={handleNewEmployee} />
+						<NewEmpForm
+							handleNewEmployee={handleNewEmployee}
+							handleCancelButton={handleCancelButton}
+						/>
 					)}
 				</div>
 			)}

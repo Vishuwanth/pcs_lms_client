@@ -158,11 +158,17 @@ function NewEmpForm(props) {
 				</Form.Group>
 				<Form.Group as={Row} id='form-cancel-button'>
 					<Col sm={{ span: 10, offset: 2 }} id='form-cancel-button-inner'>
+						<Button type='reset' className='cancel-button'>
+							Reset
+						</Button>
+					</Col>
+				</Form.Group>
+				<Form.Group as={Row} id='form-cancel-button'>
+					<Col sm={{ span: 10, offset: 2 }} id='form-cancel-button-inner'>
 						<Button
-							type='reset'
+							type='button'
 							className='cancel-button'
-							// onClick={props.onFormClose}
-						>
+							onClick={props.handleCancelButton}>
 							Cancel
 						</Button>
 					</Col>
