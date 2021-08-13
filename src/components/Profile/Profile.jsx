@@ -44,7 +44,7 @@ function Profile(props) {
 				})
 			})
 	}
-	const isMale = profileData.Gender
+	const isMale = profileData.EmpGender
 	const maleImg = 'https://bootdey.com/img/Content/avatar/avatar7.png'
 
 	return (
