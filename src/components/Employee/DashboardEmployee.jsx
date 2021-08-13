@@ -61,7 +61,8 @@ function DashboardEmployee(props) {
 	useEffect(() => {
 		console.log('useEffect called')
 		getLeaveBalance()
-	})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [checked])
 
 	// function to load leave Balance when dashboard is loaded
 	const getLeaveBalance = async () => {
@@ -108,8 +109,10 @@ function DashboardEmployee(props) {
 						<ul className='navbar-ul'>
 							<li className='active'>
 								<Link to={'/employee/' + props.data['_id'] + '/home'}>
-									<FontAwesomeIcon icon={faHome} className='sidebar-icon' />
-									Home
+									<div className='d-flex'>
+										<FontAwesomeIcon icon={faHome} className='sidebar-icon' />
+										<p>Home</p>
+									</div>
 								</Link>
 							</li>
 							<li>
@@ -117,23 +120,32 @@ function DashboardEmployee(props) {
 									to={
 										'/employee/' + props.data['_id'] + '/leave-application-emp'
 									}>
-									<FontAwesomeIcon icon={faPenFancy} className='sidebar-icon' />
-									Leave
+									<div className='d-flex'>
+										<FontAwesomeIcon
+											icon={faPenFancy}
+											className='sidebar-icon'
+										/>
+										<p>Leave</p>
+									</div>
 								</Link>
 							</li>
 							<li>
 								<Link to={'/employee/' + props.data['_id'] + '/holidays'}>
-									<FontAwesomeIcon
-										icon={faUmbrellaBeach}
-										className='sidebar-icon'
-									/>
-									Holidays
+									<div className='d-flex'>
+										<FontAwesomeIcon
+											icon={faUmbrellaBeach}
+											className='sidebar-icon'
+										/>
+										<p>Holidays</p>
+									</div>
 								</Link>
 							</li>
 							<li>
 								<Link to={'/employee/' + props.data['_id'] + '/profile'}>
-									<FontAwesomeIcon icon={faUser} className='sidebar-icon' />
-									Profile
+									<div className='d-flex'>
+										<FontAwesomeIcon icon={faUser} className='sidebar-icon' />
+										<p>Profile</p>
+									</div>
 								</Link>
 							</li>
 						</ul>
