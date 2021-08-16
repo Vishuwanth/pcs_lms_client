@@ -68,8 +68,13 @@ function EmployeeProfile(props) {
 						Status: status,
 					}
 				})
+				console.log(formattedData)
+				if (formattedData !== []) {
+					setLeaveData(formattedData)
+				} else {
+					setLeaveData([])
+				}
 
-				setLeaveData(formattedData)
 				setIsLoading(false)
 			})
 	}
@@ -222,6 +227,8 @@ function EmployeeProfile(props) {
 								<CSpinner color='light' variant='grow' />
 								<CSpinner color='dark' variant='grow' />
 							</div>
+						) : leaveData.length === 0 ? (
+							<h1>No Leave History</h1>
 						) : (
 							<div className='leave-history-table'>
 								<CTable caption='top' responsive>
