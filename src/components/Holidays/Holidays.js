@@ -5,6 +5,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham.css'
 import 'ag-grid/dist/styles/theme-blue.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Holidays.css'
 // const override = css`
 //   display: block;
@@ -12,6 +13,7 @@ import './Holidays.css'
 //   margin-top: 45px;
 //   border-color: red;
 // `;
+import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
 function Holidays() {
 	// eslint-disable-next-line no-unused-vars
@@ -96,6 +98,12 @@ function Holidays() {
 
 	return (
 		<div>
+			<CBreadcrumb style={{ '--cui-breadcrumb-divider': "'';" }}>
+				<CBreadcrumbItem>
+					<Link to='/'>Home</Link>
+				</CBreadcrumbItem>
+				<CBreadcrumbItem active>Holidays</CBreadcrumbItem>
+			</CBreadcrumb>
 			<p className='holiday'>Holidays List of Year 2021</p>
 			<div
 				id='table-div'

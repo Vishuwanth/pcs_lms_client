@@ -14,6 +14,8 @@ import 'ag-grid/dist/styles/theme-blue.css'
 
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
+import { Link } from 'react-router-dom'
 
 const red = css`
 	background-color: red;
@@ -235,6 +237,12 @@ function LeaveApplicationHRTable(props) {
 
 	return (
 		<div id='table-outer-div-scroll'>
+			<CBreadcrumb style={{ '--cui-breadcrumb-divider': "'';" }}>
+				<CBreadcrumbItem>
+					<Link to='/hr'>Home</Link>
+				</CBreadcrumbItem>
+				<CBreadcrumbItem active>Leave Request</CBreadcrumbItem>
+			</CBreadcrumb>
 			<div className='heading-and-button'>
 				<div>
 					<span id='role-title'>Leave Requests</span>

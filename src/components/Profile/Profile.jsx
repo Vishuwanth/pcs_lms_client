@@ -5,6 +5,8 @@ import axios from 'axios'
 import './Profile.css'
 import { useEffect, useState } from 'react'
 import FemaleImg from '../Images/female.jpg'
+import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
+import { Link } from 'react-router-dom'
 
 function Profile(props) {
 	const [profileData, setProfileData] = useState({
@@ -49,6 +51,12 @@ function Profile(props) {
 
 	return (
 		<div className='main-body'>
+			<CBreadcrumb style={{ '--cui-breadcrumb-divider': "'';" }}>
+				<CBreadcrumbItem>
+					<Link to='/hr'>Home</Link>
+				</CBreadcrumbItem>
+				<CBreadcrumbItem active>Profile</CBreadcrumbItem>
+			</CBreadcrumb>
 			<div className='row gutters-sm'>
 				<div className='col-md-5 mb-3'>
 					<div className='card'>

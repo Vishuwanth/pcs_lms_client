@@ -17,6 +17,8 @@ import EmployeeProfile from './EmployeeProfile'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import NewEmpForm from './NewEmpForm'
+import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
+import { Link, Route } from 'react-router-dom'
 
 const override = css`
 	display: block;
@@ -209,30 +211,41 @@ function EmployeesListTable() {
 			{showEmpDetails ? (
 				<div id='table-outer-div-scroll'>
 					{!loading ? (
-						<div
-							id='table-div'
-							className='ag-blue'
-							style={{ height: '550px', width: '100%', padding: '10px' }}>
-							<div className='heading-and-button'>
-								<div>
-									<span id='role-title'>Employee</span>
+						<>
+							<CBreadcrumb style={{ '--cui-breadcrumb-divider': "'';" }}>
+								<CBreadcrumbItem>
+									<Link to='/hr'>Home</Link>
+								</CBreadcrumbItem>
+								<CBreadcrumbItem active>Employee List</CBreadcrumbItem>
+							</CBreadcrumb>
+							<div
+								id='table-div'
+								className='ag-blue'
+								style={{ height: '550px', width: '100%', padding: '10px' }}>
+								<div className='heading-and-button'>
+									<div>
+										<span id='role-title'>Employee</span>
+									</div>
+
+									<Button
+										variant='primary'
+										id='add-button'
+										onClick={onAddNewEmp}>
+										<FontAwesomeIcon icon={faPlus} id='plus-icon' />
+									</Button>
 								</div>
 
-								<Button variant='primary' id='add-button' onClick={onAddNewEmp}>
-									<FontAwesomeIcon icon={faPlus} id='plus-icon' />
-								</Button>
+								<AgGridReact
+									columnDefs={columnDefs}
+									defaultColDef={defaultColDef}
+									// columnTypes={columnTypes}
+									rowData={rowData}
+									pagination={true}
+									paginationPageSize={20}
+									// getRowHeight={getRowHeight}
+								/>
 							</div>
-
-							<AgGridReact
-								columnDefs={columnDefs}
-								defaultColDef={defaultColDef}
-								// columnTypes={columnTypes}
-								rowData={rowData}
-								pagination={true}
-								paginationPageSize={20}
-								// getRowHeight={getRowHeight}
-							/>
-						</div>
+						</>
 					) : (
 						<div id='loading-bar'>
 							<RingLoader

@@ -4,6 +4,7 @@ import { Form, Button, Col, Row } from 'react-bootstrap'
 
 import '../Employee/LeaveApplicationEmpForm.css'
 import './LeaveApplicationHRFormEdit.css'
+
 function LeaveApplicationHRFormEdit(props) {
 	console.log(props.editData)
 
