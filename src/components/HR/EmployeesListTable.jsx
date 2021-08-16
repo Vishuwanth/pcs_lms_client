@@ -18,7 +18,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import NewEmpForm from './NewEmpForm'
 import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const override = css`
 	display: block;

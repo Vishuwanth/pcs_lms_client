@@ -22,7 +22,7 @@ function EmployeeProfile(props) {
 	// console.log(props.handleEmpProfile)
 	const [leaveData, setLeaveData] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
-	const [currentPage, setCurrentPage] = useState(1)
+	// const [currentPage, setCurrentPage] = useState(1)
 
 	const emp = props.emp
 	const isMale = emp.Gender
