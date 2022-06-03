@@ -68,9 +68,12 @@ function App() {
     await axios
       .post("https://pcs-lms.herokuapp.com/login", bodyLogin)
       .then((res) => {
-        console.log("res.data", res.data);
-        var decodedData = res.data;
-        localStorage.setItem("token", JSON.stringify(res.data));
+        // console.log(decodedData.Account);
+        var decodedData = jwt.decode(res.data);
+        // console.log("Here is the decoded data")
+        // console.log(decodedData.Account)
+        // console.log(decodedData["FirstName"])
+        localStorage.setItem("token", res.data);
 
         if (
           (res == undefined ||
