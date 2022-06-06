@@ -120,34 +120,31 @@ function LeaveApplicationHRTable(props) {
       .then((response) => {
         // this.leaveApplicationEmpObj = response.data;
         leaveApplicationHRObj = response.data;
-
-        // console.log('leaveApplicationHRObj::::', leaveApplicationHRObj)
-        // this.setState({ leaveApplicationEmpData: response.data });
-        // this.setState({ loading: false });
-        // this.rowDataT = [];
-
+        console.log("leaveApplicationHRObj", leaveApplicationHRObj);
         setleaveApplicationHRData(response.data);
 
         setloading(false);
         rowDataT = [];
         // console.log(leaveApplicationHRObj)
         // let data=this.educationObj.education["0"];  already commented this line
-        leaveApplicationHRObj.map((data) => {
-          let temp = {
-            data,
-            EmployeeName: data["EmployeeName"],
-            Leavetype: data["Leavetype"],
-            FromDate: data["FromDate"].slice(0, 10),
-            ToDate: data["ToDate"].slice(0, 10),
-            Reasonforleave: data["Reasonforleave"],
-            // Status: this.status(data["Status"]),  commented by me
-            Status: status(data["Status"]), //status() function call
-          };
+        leaveApplicationHRObj
+          .sort((a, b) => (b.toDate > a.toDate ? 1 : -1))
+          .map((data) => {
+            let temp = {
+              data,
+              EmployeeName: data["EmployeeName"],
+              Leavetype: data["Leavetype"],
+              FromDate: data["FromDate"].slice(0, 10),
+              ToDate: data["ToDate"].slice(0, 10),
+              Reasonforleave: data["Reasonforleave"],
+              // Status: this.status(data["Status"]),  commented by me
+              Status: status(data["Status"]), //status() function call
+            };
 
-          // this.rowDataT.push(temp);
+            // this.rowDataT.push(temp);
 
-          rowDataT.push(temp);
-        });
+            rowDataT.push(temp);
+          });
         // this.setState({ rowData: this.rowDataT });
 
         //setrowData(rowDataT)
