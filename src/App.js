@@ -15,6 +15,9 @@ import AdminPage from "./components/Admin/AdminPage";
 import DashboardHR from "./components/HR/DashboardHR";
 import DashboardEmployee from "./components/Employee/DashboardEmployee";
 
+const apiUrl = process.env.REACT_APP_lms_url;
+console.log("apiUrl app", apiUrl);
+
 function App() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -66,7 +69,7 @@ function App() {
     // console.log(typeof(bodyLogin))
 
     await axios
-      .post("https://pcs-lms.herokuapp.com/login", bodyLogin)
+      .post(`${apiUrl}/login`, bodyLogin)
       .then((res) => {
         console.log("res.data", res.data);
         var decodedData = res.data;

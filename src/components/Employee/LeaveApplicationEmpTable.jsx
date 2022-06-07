@@ -15,6 +15,7 @@ import "ag-grid/dist/styles/theme-blue.css";
 
 import { useState } from "react";
 import { useEffect } from "react";
+const apiUrl = process.env.REACT_APP_lms_url;
 
 const override = css`
   display: block;
@@ -92,7 +93,7 @@ function LeaveApplicationEmpTable(props) {
   const getLeaveBalance = async () => {
     await axios
       .get(
-        "https://pcs-lms.herokuapp.com/leave-application-emp/" +
+        `${apiUrl}/leave-application-emp/` +
           props.data["_id"] +
           "/leave-balance",
         {
@@ -114,15 +115,11 @@ function LeaveApplicationEmpTable(props) {
 
   const loadLeaveApplicationEmpData = async () => {
     await axios
-      .get(
-        "https://pcs-lms.herokuapp.com/leave-application-emp/" +
-          props.data["_id"],
-        {
-          headers: {
-            authorization: localStorage.getItem("token") || "",
-          },
-        }
-      )
+      .get(`${apiUrl}/leave-application-emp/` + props.data["_id"], {
+        headers: {
+          authorization: localStorage.getItem("token") || "",
+        },
+      })
       .then((response) => {
         // this.leaveApplicationEmpObj = response.data;
         leaveApplicationEmpObj = response.data;
@@ -137,21 +134,23 @@ function LeaveApplicationEmpTable(props) {
         rowDataT = [];
 
         // let data=this.educationObj.education["0"];  already commented this line
-        leaveApplicationEmpObj.leaveApplication.map((data) => {
-          let temp = {
-            data,
-            Leavetype: data["Leavetype"],
-            FromDate: data["FromDate"].slice(0, 10),
-            ToDate: data["ToDate"].slice(0, 10),
-            Reasonforleave: data["Reasonforleave"],
-            // Status: this.status(data["Status"]),  commented by me
-            Status: status(data["Status"]), //status() function call
-          };
+        leaveApplicationEmpObj.leaveApplication
+          .sort((a, b) => (b.toDate > a.toDate ? 1 : -1))
+          .map((data) => {
+            let temp = {
+              data,
+              Leavetype: data["Leavetype"],
+              FromDate: data["FromDate"].slice(0, 10),
+              ToDate: data["ToDate"].slice(0, 10),
+              Reasonforleave: data["Reasonforleave"],
+              // Status: this.status(data["Status"]),  commented by me
+              Status: status(data["Status"]), //status() function call
+            };
 
-          // this.rowDataT.push(temp);
+            // this.rowDataT.push(temp);
 
-          rowDataT.push(temp);
-        });
+            rowDataT.push(temp);
+          });
         // this.setState({ rowData: this.rowDataT });
 
         //setrowData(rowDataT)
@@ -184,17 +183,11 @@ function LeaveApplicationEmpTable(props) {
     console.log(e1, e2);
     if (window.confirm("Are you sure to delete this record? ") == true) {
       await axios
-        .delete(
-          "https://pcs-lms.herokuapp.com/leave-application-emp/" +
-            e1 +
-            "/" +
-            e2,
-          {
-            headers: {
-              authorization: localStorage.getItem("token") || "",
-            },
-          }
-        )
+        .delete(`${apiUrl}/leave-application-emp/` + e1 + "/" + e2, {
+          headers: {
+            authorization: localStorage.getItem("token") || "",
+          },
+        })
         .then((res) => {
           // this.componentDidMount();
           loadLeaveApplicationEmpData();

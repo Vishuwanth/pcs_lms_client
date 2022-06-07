@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { CBreadcrumb, CBreadcrumbItem } from "@coreui/react";
 import { Link } from "react-router-dom";
+const apiUrl = process.env.REACT_APP_lms_url;
 
 const red = css`
   background-color: red;
@@ -112,7 +113,7 @@ function LeaveApplicationHRTable(props) {
 
   const loadLeaveApplicationHRData = () => {
     axios
-      .get("https://pcs-lms.herokuapp.com/leave-application-hr/", {
+      .get(`${apiUrl}/leave-application-hr`, {
         headers: {
           authorization: localStorage.getItem("token") || "",
         },
@@ -165,7 +166,7 @@ function LeaveApplicationHRTable(props) {
   //   if (window.confirm("Are you sure to delete this record? ") == true) {
   //     axios
   //       .delete(
-  //         "https://pcs-lms.herokuapp.com/leave-application-hr/" + e1 + "/" + e2, {
+  //         `${apiUrl}/leave-application-hr/` + e1 + "/" + e2, {
   //         headers: {
   //           authorization: localStorage.getItem("token") || ""
   //         }
@@ -262,7 +263,7 @@ function LeaveApplicationHRTable(props) {
         <div
           id="table-div"
           className="ag-blue"
-          style={{ height: "350px", width: "100%", padding: "10px" }}
+          style={{ height: "450px", width: "100%", padding: "10px" }}
         >
           <AgGridReact
             columnDefs={columnDefs}
@@ -272,8 +273,9 @@ function LeaveApplicationHRTable(props) {
             pagination={true}
             paginationPageSize={20}
             rowClassRules={(params) => {
+              console.log("params.data.Status", params.data.Status);
               // eslint-disable-next-line eqeqeq
-              if (params.data.Status == "Approved") {
+              if (params.data.Status == 2) {
                 return (css = { red });
               }
             }}

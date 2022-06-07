@@ -66,7 +66,7 @@ function App() {
     // console.log(typeof(bodyLogin))
 
     await axios
-      .post("https://pcs-lms.herokuapp.com/login", bodyLogin)
+      .post(`${apiUrl}/login`, bodyLogin)
       .then((res) => {
         // console.log(decodedData.Account);
         var decodedData = jwt.decode(res.data);
