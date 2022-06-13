@@ -13,7 +13,8 @@ import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid/dist/styles/theme-blue.css";
 import { format } from "date-fns";
 import EmployeeProfile from "./EmployeeProfile";
-
+import Modal from "react-modal";
+import { GiCancel } from "react-icons/gi";
 import { useState } from "react";
 import { useEffect } from "react";
 import NewEmpForm from "./NewEmpForm";
@@ -33,6 +34,23 @@ function EmployeesListTable() {
   const [showEmpDetails, setShowEmpDetails] = useState(true);
   const [loading, setloading] = useState(true);
   const [showEmpProfile, setShowEmpProfile] = useState(false);
+  const [LeaveBalanceCount, setLeaveBalanceCount] = useState(0);
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      height: "230px",
+    },
+  };
+
+  var [rowData, setrowData] = useState([]);
+  const [emp, setEmp] = useState({});
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState("");
   // eslint-disable-next-line no-unused-vars
 
   // eslint-disable-next-line no-unused-vars
@@ -40,6 +58,7 @@ function EmployeesListTable() {
     {
       headerName: "Id",
       field: "Id",
+      width: 100,
       sortable: true,
     },
     {
@@ -81,10 +100,14 @@ function EmployeesListTable() {
       width: 30,
       cellRendererFramework: renderDeleteButton.bind(this),
     },
+    {
+      headerName: "Update Leaves",
+      field: "Update Employee",
+      filter: false,
+      width: 150,
+      cellRendererFramework: renderAddButton.bind(this),
+    },
   ]);
-
-  var [rowData, setrowData] = useState([]);
-  const [emp, setEmp] = useState({});
 
   useEffect(() => {
     loadEmployeeListTable();
@@ -122,21 +145,62 @@ function EmployeesListTable() {
     );
   }
 
+  function renderAddButton(params) {
+    return (
+      <FontAwesomeIcon
+        style={{ marginLeft: "50" }}
+        icon={faPlus}
+        onClick={() => handleModalUpdateLeaves(params.data.data)}
+      />
+    );
+  }
+
+  const handleUpdateLeaveBalance = async () => {
+    if (LeaveBalanceCount <= 0) {
+      window.alert("Please Enter Valid Value");
+      return;
+    }
+    let body = {
+      leaveBalance: LeaveBalanceCount,
+    };
+    await axios
+      .put(
+        `${apiUrl}/leave-application-emp/${modalContent._id}/leave-balance/`,
+        body
+      )
+      .then((res) => {
+        console.log("here is the response", res);
+      });
+    window.alert("Leave Balance Updated");
+    setLeaveBalanceCount(0);
+    return closeModal();
+  };
+
+  const handleModalUpdateLeaves = (empdata) => {
+    // console.log("empdata._id", empdata);
+    setModalContent(empdata);
+    setIsOpen(true);
+  };
+
+  function closeModal() {
+    setIsOpen(false);
+    setModalContent("");
+  }
   const handleEmpProfile = (empObj) => {
     setShowEmpDetails(!showEmpDetails);
     setShowEmpProfile(!showEmpProfile);
-    console.log(empObj);
+    // console.log(empObj);
     return setEmp(empObj);
   };
 
   const handleCancelButton = () => {
-    console.log("Cancel");
+    // console.log("Cancel");
     setShowEmpProfile(false);
     setShowEmpDetails(true);
   };
 
   const handleDeleteProfile = (empObj) => {
-    console.log(empObj);
+    // console.log(empObj);
   };
 
   const loadEmployeeListTable = () => {
@@ -245,6 +309,64 @@ function EmployeesListTable() {
                   paginationPageSize={20}
                   // getRowHeight={getRowHeight}
                 />
+                <Modal
+                  isOpen={modalIsOpen}
+                  // onAfterOpen={afterOpenModal}
+                  style={customStyles}
+                  onRequestClose={closeModal}
+                  contentLabel="Example Modal"
+                  ariaHideApp={false}
+                >
+                  {/* <FontAwesomeIcon icon={} onClick={closeModal}/> */}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <div>
+                      <GiCancel
+                        size={25}
+                        onClick={closeModal}
+                        style={{
+                          marginLeft: "92%",
+                          marginBottom: "10",
+                          cursor: "pointer",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <h6>Update Leave Balance for {modalContent.FirstName}</h6>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "10px",
+                      }}
+                    >
+                      <p>Leave Balance : </p>
+                      <input
+                        type="number"
+                        style={{
+                          width: "100px",
+                          height: "30px",
+                          marginLeft: "10px",
+                        }}
+                        onChange={(event) =>
+                          setLeaveBalanceCount(event.target.value)
+                        }
+                      />
+                    </div>
+                    <button
+                      className="button"
+                      style={{ alignSelf: "center" }}
+                      onClick={() => handleUpdateLeaveBalance()}
+                    >
+                      Update
+                    </button>
+                  </div>
+                </Modal>
               </div>
             </>
           ) : (

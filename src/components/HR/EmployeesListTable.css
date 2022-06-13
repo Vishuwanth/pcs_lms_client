@@ -1,19 +1,19 @@
 .heading-and-button {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 #role-title {
-	font-weight: 600;
-	font-size: 20px;
+  font-weight: 600;
+  font-size: 20px;
 }
 #add-button {
-	width: 50px;
-	height: 50px;
-	border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
 }
 .add-employee-container {
-	display: flex !important;
-	flex-direction: row;
+  display: flex !important;
+  flex-direction: row;
 }
