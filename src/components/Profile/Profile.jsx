@@ -67,7 +67,7 @@ function Profile(props) {
                 />
                 <div className="mt-3">
                   <h4>{profileData.EmpName}</h4>
-                  <p className="text-secondary mb-1">Role : </p>
+                  {/* <p className="text-secondary mb-1">Role : </p> */}
                   <p className="text-muted font-size-sm">Address</p>
                   <p className="text-muted font-size-sm">
                     {profileData.EmpEmail}
