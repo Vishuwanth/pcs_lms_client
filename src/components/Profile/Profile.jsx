@@ -7,7 +7,22 @@ import { useEffect, useState } from "react";
 import FemaleImg from "../Images/female.jpg";
 import { CBreadcrumb, CBreadcrumbItem } from "@coreui/react";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+import { GiCancel } from "react-icons/gi";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 const apiUrl = process.env.REACT_APP_lms_url;
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    height: "230px",
+  },
+};
 
 function Profile(props) {
   const [profileData, setProfileData] = useState({
@@ -18,11 +33,58 @@ function Profile(props) {
     EmpDOB: "",
     EmpContact: "",
   });
+  const [modalIsOpen, setIsOpen] = useState(false);
 
+  const [isPasswordVerified, setIsPasswordVerified] = useState(false);
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   useEffect(() => {
     loadProfileDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const verifyPassword = () => {
+    if (oldPassword === profileData.EmpPassword) {
+      console.log("correct password");
+      return setIsPasswordVerified(true);
+    } else {
+      window.alert("Incorrect Password");
+      return setIsPasswordVerified(false);
+    }
+  };
+
+  const handleModal = (value) => {
+    console.log("value=", value);
+
+    setIsOpen(true);
+  };
+  const handlePasswordUpdate = (newPassword) => {
+    if (!newPassword) {
+      window.alert("Enter New Password");
+      return;
+    } else {
+      let body = {
+        Password: newPassword,
+      };
+      axios
+        .put(
+          `${apiUrl}/employee/` +
+            props.data["_id"] +
+            "/profile/update-password",
+          body
+        )
+        .then((res) => console.log(res));
+    }
+    window.alert(
+      "Password has been Successfully Updated, Refresh the Page for udpated password"
+    );
+    closeModal();
+  };
+  function closeModal() {
+    setOldPassword("");
+    setIsPasswordVerified(false);
+    setIsOpen(false);
+  }
 
   function loadProfileDetails() {
     axios
@@ -146,6 +208,125 @@ function Profile(props) {
                 <div className="col-sm-9 text-secondary">
                   {profileData.EmpDOB}
                 </div>
+              </div>
+              <hr />
+              <div className="row align-items-center">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Password</h6>
+                </div>
+                <div className="col-sm-9 ">
+                  <div className="box">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      className="input-search"
+                      value={profileData.EmpPassword}
+                      disabled={true}
+                    />
+
+                    {showPassword ? (
+                      <AiFillEye
+                        onClick={() => setShowPassword(!showPassword)}
+                      />
+                    ) : (
+                      <AiFillEyeInvisible
+                        onClick={() => setShowPassword(!showPassword)}
+                      />
+                    )}
+                  </div>
+
+                  <button
+                    className="button"
+                    // style={{ marginLeft: "15px" }}
+                    onClick={(event) => handleModal(event.target.value)}
+                  >
+                    Change
+                  </button>
+                  <Modal
+                    isOpen={modalIsOpen}
+                    // onAfterOpen={afterOpenModal}
+                    style={customStyles}
+                    onRequestClose={closeModal}
+                    contentLabel="Example Modal"
+                    ariaHideApp={false}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <div>
+                        <GiCancel
+                          size={25}
+                          onClick={closeModal}
+                          style={{
+                            marginLeft: "92%",
+                            marginBottom: "10",
+                            cursor: "pointer",
+                          }}
+                        />
+                      </div>
+                      <div>
+                        {!isPasswordVerified && (
+                          <div>
+                            <div>Enter Your Current Password:</div>
+                            <div>
+                              <input
+                                style={{
+                                  width: "100%",
+                                  borderRadius: "7px",
+                                  marginTop: "10px",
+                                }}
+                                type="password"
+                                onChange={(event) =>
+                                  setOldPassword(event.target.value)
+                                }
+                              />
+                            </div>
+                            <button
+                              className="button "
+                              onClick={() => verifyPassword()}
+                              style={{ marginLeft: "30px" }}
+                            >
+                              Verify
+                            </button>
+                          </div>
+                        )}
+                        <div>
+                          {isPasswordVerified && (
+                            <div>
+                              <div>New Password : </div>
+                              <div>
+                                <input
+                                  type="password"
+                                  style={{
+                                    borderRadius: "7px",
+                                    height: "30px",
+                                  }}
+                                  onChange={(event) =>
+                                    setNewPassword(event.target.value)
+                                  }
+                                />
+                              </div>
+                              <button
+                                className="button"
+                                style={{ marginLeft: "30px" }}
+                                onClick={() =>
+                                  handlePasswordUpdate(newPassword)
+                                }
+                              >
+                                Update
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </Modal>
+                </div>
+                {/* <div className="col-sm-9 text-secondary">
+                  {profileData.EmpPassword}
+                </div> */}
               </div>
               <hr />
               <div className="row">
