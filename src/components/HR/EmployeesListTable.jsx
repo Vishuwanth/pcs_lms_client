@@ -317,7 +317,6 @@ function EmployeesListTable() {
                   contentLabel="Example Modal"
                   ariaHideApp={false}
                 >
-                  {/* <FontAwesomeIcon icon={} onClick={closeModal}/> */}
                   <div
                     style={{
                       display: "flex",
