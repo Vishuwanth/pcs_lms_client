@@ -75,9 +75,7 @@ function Profile(props) {
         )
         .then((res) => console.log(res));
     }
-    window.alert(
-      "Password has been Successfully Updated, Refresh the Page for udpated password"
-    );
+    window.alert("Password has been Successfully Updated");
     closeModal();
   };
   function closeModal() {
