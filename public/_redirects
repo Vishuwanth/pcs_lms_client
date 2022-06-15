@@ -1,2 +1,9 @@
-/login /
-/employee /employee/:id
+/login                               /login
+/employee/:id/home                   /employee/:id/home
+/hr                                  /hr
+/hr/leave-application-hr             /hr/leave-application-hr
+/hr/holidays                         /hr/holidays
+/hr/all-emp-details                  /hr/all-emp-details
+/employee/:id/profile                /employee/:id/profile
+/employee/:id/leave-application-emp  /employee/:id/leave-application-emp
+/employee/:id/holidays               /employee/:id/holidays
